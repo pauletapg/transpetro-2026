@@ -92,6 +92,8 @@ async function boot() {
   else {
     $('#save').hidden = false;
     if (MODO_ESCRITA === 'fs') fileHandle = await loadHandle();
+    // publicar so faz sentido com o servidor local: e ele que roda o git
+    if (MODO_ESCRITA === 'api') $('#publish').hidden = false;
   }
 
   week = Math.min(Math.max(0, Number(localStorage.getItem('transpetro-2026-semana') || 0)), plano.semanas.length - 1);
@@ -159,7 +161,7 @@ async function save(silencioso) {
       if (!r.ok) throw new Error(await r.text());
       baseline = state.atualizadoEm;
       markDirty();
-      return silencioso ? undefined : flash('Gravado. Agora rode publicar.bat para o celular ver.');
+      return silencioso ? undefined : flash('Gravado no computador. Use ↑ Publicar para o celular ver.');
     } catch (e) {
       return flash('Falhou ao gravar: ' + e.message, true);
     }
@@ -182,7 +184,7 @@ async function save(silencioso) {
     await w.write(blob); await w.close();
     baseline = state.atualizadoEm;
     markDirty();
-    flash('Gravado em progresso.json — agora rode publicar.bat');
+    flash('Gravado em progresso.json. Rode o publicar.bat para o celular ver.');
   } catch (e) {
     if (e.name === 'AbortError') return;
     // ultimo recurso: baixar o arquivo para o usuario substituir a mao
@@ -486,6 +488,32 @@ function openErrPanel() {
   if (!$('#errPanel').open) $('#errPanel').showModal();
 }
 
+/* ---------------- publicar ---------------- */
+
+/* Gravar escreve no disco. Publicar manda para o GitHub — e so depois disso
+   que o celular ve. Antes o segundo passo era o publicar.bat, fora da tela,
+   e era facil esquecer. */
+async function publicar() {
+  const b = $('#publish');
+  b.disabled = true;
+  b.textContent = 'gravando…';
+
+  await gravarAgora();            // nunca publica sem gravar antes
+
+  b.textContent = 'enviando…';
+  try {
+    const r = await fetch('api/publicar', { method: 'POST' });
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.erro || 'falhou');
+    b.textContent = j.nada ? '↑ nada novo' : '↑ publicado ✓';
+    b.title = j.msg || '';
+  } catch (e) {
+    b.textContent = '↑ falhou';
+    b.title = e.message;
+  }
+  setTimeout(() => { b.textContent = '↑ Publicar'; b.disabled = false; }, 4000);
+}
+
 /* ---------------- banca, TRANSPETRO e ajuda ---------------- */
 
 const INFOS = { banca: 'Sobre a banca', transpetro: 'Sobre a TRANSPETRO', ajuda: 'Ajuda' };
@@ -528,7 +556,8 @@ $('#toggleDone').addEventListener('click', () => {
   saveFields(); touch(); render();
 });
 ['#qHits', '#notes'].forEach(s => $(s).addEventListener('change', saveFields));
-$('#save').addEventListener('click', save);
+$('#save').addEventListener('click', () => save());
+$('#publish').addEventListener('click', publicar);
 $('#openErrors').addEventListener('click', openErrPanel);
 $('#openInfo').addEventListener('click', () => abrirInfo('banca'));
 $('#infoClose').addEventListener('click', () => $('#infoPanel').close());

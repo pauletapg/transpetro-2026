@@ -12,7 +12,7 @@ o JSON para ca e o Python escreve no disco. Funciona em qualquer navegador.
 
 So aceita conexao de 127.0.0.1: nada disso fica exposto na rede.
 """
-import io, json, os, sys, threading, webbrowser
+import io, json, os, subprocess, sys, threading, time, webbrowser
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -49,7 +49,46 @@ class Handler(SimpleHTTPRequestHandler):
             return self._json(200, {'ok': True, 'grava': True})
         return super().do_GET()
 
+    def _git(self, *args):
+        """Roda um comando git na pasta do projeto e devolve (codigo, saida)."""
+        r = subprocess.run(('git',) + args, cwd=RAIZ, capture_output=True,
+                           text=True, encoding='utf-8', errors='replace', timeout=120)
+        return r.returncode, ((r.stdout or '') + (r.stderr or '')).strip()
+
+    def publicar(self):
+        """git add + commit + push. E o que faz o celular ver a versao nova."""
+        if not os.path.isdir(os.path.join(RAIZ, '.git')):
+            return self._json(400, {'erro': 'Esta pasta ainda nao e um repositorio git.'})
+
+        cod, _ = self._git('add', '-A')
+        if cod:
+            return self._json(500, {'erro': 'git add falhou'})
+
+        # nada mudou desde o ultimo envio?
+        cod, _ = self._git('diff', '--cached', '--quiet')
+        if cod == 0:
+            cod, pend = self._git('log', '--oneline', 'origin/main..HEAD')
+            if not pend:
+                return self._json(200, {'ok': True, 'nada': True,
+                                        'msg': 'Nada novo para publicar.'})
+        else:
+            cod, saida = self._git('commit', '-m',
+                                   'estudo: progresso de ' + time.strftime('%d/%m/%Y'))
+            if cod:
+                return self._json(500, {'erro': 'git commit falhou: ' + saida[:400]})
+
+        cod, saida = self._git('push', 'origin', 'HEAD')
+        if cod:
+            return self._json(500, {'erro': 'git push falhou: ' + saida[:400]})
+
+        return self._json(200, {'ok': True, 'msg': 'Publicado. O celular ve em ~1 minuto.'})
+
     def do_POST(self):
+        if self.path.startswith('/api/publicar'):
+            try:
+                return self.publicar()
+            except Exception as e:
+                return self._json(500, {'erro': str(e)})
         if not self.path.startswith('/api/progresso'):
             return self._json(404, {'erro': 'rota desconhecida'})
         try:
