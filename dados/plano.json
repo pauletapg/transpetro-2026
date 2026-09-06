@@ -1,0 +1,1336 @@
+{
+  "meta": {
+    "concurso": "TRANSPETRO 2026 — Analista de Sistemas Jr. · Ênfase 4 (Infraestrutura)",
+    "prova": "2026-11-29",
+    "inicio": "2026-09-07",
+    "orcamentoSemanal": "11h30 · 90 min seg–sex · 120 min sáb–dom"
+  },
+  "disciplinas": {
+    "redes": {
+      "nome": "Redes e Sistemas Distribuídos",
+      "cor": "#77b9ff",
+      "peso": 8.0,
+      "horas": 14
+    },
+    "seg": {
+      "nome": "Segurança da Informação",
+      "cor": "#ff8f8f",
+      "peso": 8.5,
+      "horas": 17
+    },
+    "bd": {
+      "nome": "Banco de Dados",
+      "cor": "#7be6a6",
+      "peso": 6.5,
+      "horas": 11
+    },
+    "prog": {
+      "nome": "Programação",
+      "cor": "#ffb36b",
+      "peso": 6.5,
+      "horas": 10
+    },
+    "arq": {
+      "nome": "Arquitetura e Alto Desempenho",
+      "cor": "#b5a0ff",
+      "peso": 5.5,
+      "horas": 11
+    },
+    "rlm": {
+      "nome": "Raciocínio Lógico",
+      "cor": "#ffcf70",
+      "peso": 4.5,
+      "horas": 7
+    },
+    "so": {
+      "nome": "UNIX/Linux e Windows",
+      "cor": "#8fd8d0",
+      "peso": 5.5,
+      "horas": 10
+    },
+    "gov": {
+      "nome": "ITIL 4 e COBIT",
+      "cor": "#d9a5ff",
+      "peso": 1.5,
+      "horas": 5
+    },
+    "nuvem": {
+      "nome": "Computação em Nuvem",
+      "cor": "#9fd0ff",
+      "peso": 1.0,
+      "horas": 2.5
+    },
+    "lingua": {
+      "nome": "Português e Inglês",
+      "cor": "#f79ad3",
+      "peso": 20.0,
+      "horas": 15
+    },
+    "erros": {
+      "nome": "Revisão de erros",
+      "cor": "#ff9f6b",
+      "peso": 0,
+      "horas": 24
+    },
+    "simulado": {
+      "nome": "Simulado e provas antigas",
+      "cor": "#ff7b7b",
+      "peso": 0,
+      "horas": 10
+    }
+  },
+  "semanas": [
+    {
+      "n": 1,
+      "titulo": "Redes I — fundamentos e endereçamento",
+      "meta": "Ao fim da semana você calcula uma sub-rede no papel e sabe em que camada cada equipamento vive.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "redes",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "R01",
+              "t": "Modelo OSI — as 7 camadas e o que cada uma resolve"
+            },
+            {
+              "id": "R02",
+              "t": "Encapsulamento: PDU, cabeçalho e payload"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "redes",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "R03",
+              "t": "Pilha TCP/IP e o mapeamento com o OSI"
+            },
+            {
+              "id": "R04",
+              "t": "TCP × UDP: handshake, confiabilidade, portas conhecidas"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "redes",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "R05",
+              "t": "Topologias e meios físicos (par trançado, fibra, wireless)"
+            },
+            {
+              "id": "R06",
+              "t": "Hub, switch, roteador, bridge e access point — camada de cada um"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "redes",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "R07",
+              "t": "Endereçamento IPv4, classes e máscara"
+            },
+            {
+              "id": "R08",
+              "t": "Endereços privados, loopback, broadcast e APIPA"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "redes",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "R09",
+              "t": "CIDR, VLSM e cálculo de sub-redes"
+            },
+            {
+              "id": "R10",
+              "t": "Roteamento: estático, RIP, OSPF, BGP — noções"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L01",
+              "t": "Português: 15 questões do caderno CESGRANRIO (60 min)"
+            },
+            {
+              "id": "L02",
+              "t": "Bateria de questões de Redes filtrando CESGRANRIO (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E01",
+              "t": "Refazer todos os erros da semana sem olhar o gabarito"
+            },
+            {
+              "id": "E02",
+              "t": "Registrar cada erro no painel: assunto, causa e tipo de distrator"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "titulo": "Redes II — serviços, protocolos de aplicação e IPv6",
+      "meta": "Você explica o caminho completo de uma requisição HTTP, do DNS ao NAT.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "redes",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "R11",
+              "t": "DNS: hierarquia, tipos de registro, resolução recursiva e iterativa"
+            },
+            {
+              "id": "R12",
+              "t": "DHCP: DORA, escopo, reserva e relay"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "redes",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "R13",
+              "t": "HTTP e HTTPS: métodos, códigos de status, cabeçalhos"
+            },
+            {
+              "id": "R14",
+              "t": "Correio eletrônico: SMTP, POP3, IMAP"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "redes",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "R15",
+              "t": "LDAP e diretórios"
+            },
+            {
+              "id": "R16",
+              "t": "SSH, Telnet e SNMP (MIB, OID, trap)"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "redes",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "R17",
+              "t": "NAT, PAT e tradução de endereços"
+            },
+            {
+              "id": "R18",
+              "t": "Proxy direto × reverso; VLAN e trunking"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "redes",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "R19",
+              "t": "QoS: classificação, marcação, filas e políticas"
+            },
+            {
+              "id": "R20",
+              "t": "IPv6: notação, tipos de endereço e transição"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L03",
+              "t": "Inglês: 15 questões do caderno (60 min)"
+            },
+            {
+              "id": "L04",
+              "t": "Bateria de questões de Redes II (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E03",
+              "t": "Erros da semana 2 + revisão dos erros da semana 1"
+            },
+            {
+              "id": "E04",
+              "t": "Fechamento de Redes: checklist de 10 linhas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "titulo": "Segurança I — criptografia, identidade e acesso",
+      "meta": "Você distingue assinatura digital de certificado digital sem hesitar. É a pegadinha clássica da banca.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S01",
+              "t": "Tríade CIA + autenticidade, não repúdio e irretratabilidade"
+            },
+            {
+              "id": "S02",
+              "t": "Segurança física × lógica; controles preventivos, detectivos e corretivos"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S03",
+              "t": "Criptografia simétrica: AES, DES, 3DES, modos de operação"
+            },
+            {
+              "id": "S04",
+              "t": "Criptografia assimétrica: RSA, ECC, troca de chaves Diffie-Hellman"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S05",
+              "t": "Funções hash: MD5, SHA-1, SHA-2, colisão e salt"
+            },
+            {
+              "id": "S06",
+              "t": "Assinatura digital × certificado digital × PKI e ICP-Brasil"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S07",
+              "t": "IAM: identificação, autenticação, autorização e auditoria"
+            },
+            {
+              "id": "S08",
+              "t": "Modelos de controle de acesso: DAC, MAC, RBAC e ABAC"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S09",
+              "t": "VPN: IPsec, SSL/TLS, site-to-site × client-to-site"
+            },
+            {
+              "id": "S10",
+              "t": "MFA, SSO, federação, SAML e OAuth 2.0"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L05",
+              "t": "Português: interpretação e coesão (60 min)"
+            },
+            {
+              "id": "L06",
+              "t": "Bateria de questões de Segurança I (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E05",
+              "t": "Erros da semana 3 + revisão espaçada das semanas 1–2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "titulo": "Segurança II — defesa, monitoramento e ataques",
+      "meta": "Você sabe qual dispositivo para qual ameaça, e reconhece os ataques do OWASP Top 10 pelo enunciado.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S11",
+              "t": "Firewall: filtro de pacotes, stateful, aplicação e NGFW"
+            },
+            {
+              "id": "S12",
+              "t": "DMZ, bastion host e segmentação de rede"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S13",
+              "t": "IDS × IPS: assinatura, anomalia, HIDS e NIDS"
+            },
+            {
+              "id": "S14",
+              "t": "WAF e proteção da camada de aplicação"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S15",
+              "t": "SIEM: correlação, casos de uso e falso positivo"
+            },
+            {
+              "id": "S16",
+              "t": "EDR, XDR e resposta em endpoint"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S17",
+              "t": "DLP: dados em repouso, em trânsito e em uso"
+            },
+            {
+              "id": "S18",
+              "t": "CASB e segurança de nuvem; Zero Trust"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S19",
+              "t": "Malware: vírus, worm, trojan, ransomware, rootkit, botnet"
+            },
+            {
+              "id": "S20",
+              "t": "Ataques web: SQL injection, XSS, CSRF, DDoS, phishing"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L07",
+              "t": "Inglês: vocabulário técnico e reading (60 min)"
+            },
+            {
+              "id": "L08",
+              "t": "Bateria de questões de Segurança II (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E06",
+              "t": "Erros da semana 4 + revisão espaçada das semanas 1–3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "titulo": "Segurança III + a aposta do ITIL 4",
+      "meta": "ITIL 4 é a única novidade real do edital 2026. Saia sabendo mapear SVS ↔ lifecycle v3.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S21",
+              "t": "ISO/IEC 27001 e 27002: SGSI, Anexo A, domínios de controle"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S22",
+              "t": "ISO 31000 (risco) e ISO 22301 (continuidade): BIA, RTO, RPO"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "seg",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "S23",
+              "t": "NIST SP 800-61: fases da resposta a incidentes"
+            },
+            {
+              "id": "S24",
+              "t": "MITRE ATT&CK, cyber kill chain e SOX"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "gov",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "G01",
+              "t": "ITIL 4: Service Value System, cadeia de valor e 4 dimensões"
+            },
+            {
+              "id": "G02",
+              "t": "Os 7 princípios orientadores do ITIL 4"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "gov",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "G03",
+              "t": "ITIL v3: ciclo de vida e o mapeamento para o SVS do ITIL 4"
+            },
+            {
+              "id": "G04",
+              "t": "COBIT: governança × gestão, domínios e objetivos"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L09",
+              "t": "Português: 15 questões (60 min)"
+            },
+            {
+              "id": "L10",
+              "t": "Bateria de Segurança III e ITIL (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E07",
+              "t": "Erros da semana 5 + fechamento do bloco Segurança"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "titulo": "Banco de Dados I — modelagem e SQL",
+      "meta": "Você escreve um JOIN com agregação e GROUP BY de cabeça e normaliza até a 3FN.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "bd",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "B01",
+              "t": "MER: entidade, atributo, relacionamento, cardinalidade"
+            },
+            {
+              "id": "B02",
+              "t": "Generalização, especialização e entidade associativa"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "bd",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "B03",
+              "t": "Modelo relacional: tuplas, domínios, chaves primária e estrangeira"
+            },
+            {
+              "id": "B04",
+              "t": "Integridade de entidade, referencial e de domínio"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "bd",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "B05",
+              "t": "Dependência funcional e normalização: 1FN, 2FN, 3FN e BCNF"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "bd",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "B06",
+              "t": "SQL DDL: CREATE, ALTER, DROP e constraints"
+            },
+            {
+              "id": "B07",
+              "t": "SQL DML: INSERT, UPDATE, DELETE e SELECT básico"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "bd",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "B08",
+              "t": "JOINs: INNER, LEFT, RIGHT, FULL e produto cartesiano"
+            },
+            {
+              "id": "B09",
+              "t": "GROUP BY, HAVING, subconsultas e funções de agregação"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L11",
+              "t": "Inglês: 15 questões (60 min)"
+            },
+            {
+              "id": "L12",
+              "t": "Bateria de questões de SQL — leia o código com calma (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E08",
+              "t": "Erros da semana 6 + revisão espaçada de Redes e Segurança"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "titulo": "BD II + Programação I — transações e estruturas de dados",
+      "meta": "Você explica um deadlock e escolhe a estrutura de dados certa pela complexidade.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "bd",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "B10",
+              "t": "Transações e ACID; níveis de isolamento e anomalias"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "bd",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "B11",
+              "t": "Locks, deadlock, controle de concorrência"
+            },
+            {
+              "id": "B12",
+              "t": "Triggers, stored procedures, views e cursores"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "bd",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "B13",
+              "t": "Índices, plano de execução e ajuste de desempenho"
+            },
+            {
+              "id": "B14",
+              "t": "Alta disponibilidade: replicação, cluster, backup e recuperação"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "prog",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "P01",
+              "t": "Estruturas lineares: vetor, lista encadeada, pilha e fila"
+            },
+            {
+              "id": "P02",
+              "t": "Árvores (binária, de busca, AVL) e tabela hash"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "prog",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "P03",
+              "t": "Algoritmos de busca e ordenação"
+            },
+            {
+              "id": "P04",
+              "t": "Complexidade assintótica e notação O"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L13",
+              "t": "Português: 15 questões (60 min)"
+            },
+            {
+              "id": "L14",
+              "t": "Bateria de BD II e estruturas de dados (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E09",
+              "t": "Erros da semana 7 + revisão espaçada"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "titulo": "Programação II — Java, OO e web",
+      "meta": "Você lê um trecho de Java e prevê a saída, inclusive quando há herança e exceção no caminho.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "prog",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "P05",
+              "t": "Java: tipos primitivos, wrappers, operadores e controle de fluxo"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "prog",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "P06",
+              "t": "OO: classe, objeto, encapsulamento e construtor"
+            },
+            {
+              "id": "P07",
+              "t": "Herança, polimorfismo, interface e classe abstrata"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "prog",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "P08",
+              "t": "Collections: List, Set, Map e suas implementações"
+            },
+            {
+              "id": "P09",
+              "t": "Exceções: checked, unchecked, try-catch-finally"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "prog",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "P10",
+              "t": "HTML: estrutura, tags semânticas e formulários"
+            },
+            {
+              "id": "P11",
+              "t": "XML: bem formado × válido, DTD, XSD, XPath e XSLT"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "prog",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "P12",
+              "t": "J2EE/Jakarta: Servlet, JSP e ciclo de vida"
+            },
+            {
+              "id": "P13",
+              "t": "EJB, JDBC e arquitetura em camadas"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L15",
+              "t": "Inglês: 15 questões (60 min)"
+            },
+            {
+              "id": "L16",
+              "t": "Bateria de questões com código Java (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E10",
+              "t": "Erros da semana 8 + revisão espaçada"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "titulo": "Arquitetura e Alto Desempenho",
+      "meta": "Você justifica cluster × grid, VM × contêiner e monolito × microsserviço com trade-off, não com slogan.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "arq",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "A01",
+              "t": "Concorrência × paralelismo; threads, race condition e sincronização"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "arq",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "A02",
+              "t": "Cluster, grid e computação distribuída"
+            },
+            {
+              "id": "A03",
+              "t": "Balanceamento de carga, failover e escalabilidade vertical × horizontal"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "arq",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "A04",
+              "t": "Virtualização: hypervisor tipo 1 e 2, VM, snapshot e migração"
+            },
+            {
+              "id": "A05",
+              "t": "Storage: DAS, NAS, SAN, níveis de RAID, deduplicação"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "arq",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "A06",
+              "t": "Contêineres: imagem, camadas, Docker e diferença para VM"
+            },
+            {
+              "id": "A07",
+              "t": "Kubernetes: pod, deployment, service e orquestração"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "arq",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "A08",
+              "t": "Microsserviços × monolito; API REST e mensageria"
+            },
+            {
+              "id": "A09",
+              "t": "DevOps, CI/CD, IaC e infraestrutura imutável"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L17",
+              "t": "Português: 15 questões (60 min)"
+            },
+            {
+              "id": "L18",
+              "t": "Bateria de Arquitetura e Alto Desempenho (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E11",
+              "t": "Erros da semana 9 + revisão espaçada"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "titulo": "Sistemas Operacionais e Nuvem",
+      "meta": "Comando de Linux é cobrança direta: ou você sabe a flag, ou perde o ponto. Decore as principais.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "so",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "O01",
+              "t": "Linux: hierarquia de diretórios, sistemas de arquivos e montagem"
+            },
+            {
+              "id": "O02",
+              "t": "Permissões: rwx, octal, chmod, chown, umask, SUID e sticky bit"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "so",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "O03",
+              "t": "Comandos essenciais: grep, find, sed, awk, tar, ps, top"
+            },
+            {
+              "id": "O04",
+              "t": "Processos, sinais, systemd, cron e gerenciamento de pacotes"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "so",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "O05",
+              "t": "Windows 11: recursos, registro, PowerShell e ferramentas"
+            },
+            {
+              "id": "O06",
+              "t": "Active Directory: domínio, floresta, OU e GPO"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "nuvem",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "N01",
+              "t": "IaaS, PaaS e SaaS; responsabilidade compartilhada"
+            },
+            {
+              "id": "N02",
+              "t": "Nuvem pública, privada, híbrida e comunitária"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "nuvem",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "N03",
+              "t": "Características essenciais (NIST), elasticidade e medição"
+            },
+            {
+              "id": "N04",
+              "t": "Serverless, região, zona de disponibilidade e vendor lock-in"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L19",
+              "t": "Inglês: 15 questões (60 min)"
+            },
+            {
+              "id": "L20",
+              "t": "Bateria de Linux, Windows e Nuvem (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E12",
+              "t": "Erros da semana 10 + revisão espaçada geral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "titulo": "Raciocínio Lógico + primeiro simulado completo",
+      "meta": "O simulado é cronometrado e sem consulta. O valor dele está na correção, não na nota.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "rlm",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "Q01",
+              "t": "Proposições, conectivos e tabela-verdade"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "rlm",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "Q02",
+              "t": "Equivalências lógicas, negação e leis de De Morgan"
+            },
+            {
+              "id": "Q03",
+              "t": "Condicional, contrapositiva, recíproca e inversa"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "rlm",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "Q04",
+              "t": "Argumentos válidos, silogismos e quantificadores"
+            },
+            {
+              "id": "Q05",
+              "t": "Diagramas lógicos e problemas de associação"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "simulado",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "M01",
+              "t": "Simulado completo: 70 questões cronometradas, sem consulta"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "simulado",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "M02",
+              "t": "Correção do simulado alternativa por alternativa"
+            },
+            {
+              "id": "M03",
+              "t": "Registrar cada erro no painel com o tipo de distrator"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L21",
+              "t": "Português e Inglês: revisar os erros do simulado (60 min)"
+            },
+            {
+              "id": "L22",
+              "t": "Bateria de Raciocínio Lógico (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E13",
+              "t": "Refazer os erros do simulado do zero"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "titulo": "Revisão dirigida pelos erros e provas antigas",
+      "meta": "Semana sem conteúdo novo. Só o que você já errou e as duas provas que mais se parecem com a de 2026.",
+      "dias": [
+        {
+          "d": "Segunda",
+          "disc": "simulado",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "M04",
+              "t": "Refazer a prova de 2018 cronometrada"
+            }
+          ]
+        },
+        {
+          "d": "Terça",
+          "disc": "simulado",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "M05",
+              "t": "Correção da prova de 2018 e registro dos erros"
+            }
+          ]
+        },
+        {
+          "d": "Quarta",
+          "disc": "simulado",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "M06",
+              "t": "Refazer a prova de 2023 — a mais próxima do edital 2026"
+            }
+          ]
+        },
+        {
+          "d": "Quinta",
+          "disc": "simulado",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "M07",
+              "t": "Correção da prova de 2023 e registro dos erros"
+            }
+          ]
+        },
+        {
+          "d": "Sexta",
+          "disc": "erros",
+          "min": 90,
+          "topicos": [
+            {
+              "id": "E14",
+              "t": "Revisão dirigida: os 20 assuntos com mais erros acumulados"
+            }
+          ]
+        },
+        {
+          "d": "Sábado",
+          "disc": "lingua",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "L23",
+              "t": "Português e Inglês: última passada nos padrões da banca (60 min)"
+            },
+            {
+              "id": "L24",
+              "t": "Montar os checklists de véspera de cada bloco (60 min)"
+            }
+          ]
+        },
+        {
+          "d": "Domingo",
+          "disc": "erros",
+          "min": 120,
+          "topicos": [
+            {
+              "id": "E15",
+              "t": "Leitura leve dos checklists. Nada novo. Dormir cedo."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

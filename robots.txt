@@ -1,0 +1,4 @@
+# Pedido para buscadores nao indexarem este site.
+# Isto NAO torna o conteudo privado: quem tiver o link continua vendo tudo.
+User-agent: *
+Disallow: /

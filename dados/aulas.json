@@ -1,0 +1,12 @@
+{
+  "v": 1788736800,
+  "aulas": [
+    "r01"
+  ],
+  "arquivos": {
+    "r01": "aulas/redes/Modelo OSI - as sete camadas.md"
+  },
+  "titulos": {
+    "r01": "Modelo OSI: as sete camadas e o que cada uma resolve"
+  }
+}

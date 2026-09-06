@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07100d">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Calendário semanal de estudos para a TRANSPETRO 2026 — Analista de Sistemas Jr., Ênfase 4 (Infraestrutura).">
+<title>TRANSPETRO 2026 · Calendário de estudos</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="wrap">
+  <nav class="dock" aria-label="Navegação do calendário">
+    <div class="dock-in">
+      <div class="brand"><b class="brand-mark">TP<br>26</b><span>TRANSPETRO 2026</span></div>
+      <div class="dock-space"></div>
+      <div class="dock-status">
+        <span id="progressText">0 / 7 sessões</span>
+        <span class="progress-track"><i class="progress-fill" id="progressFill"></i></span>
+      </div>
+      <div class="nav">
+        <button class="nav-btn" id="prev" aria-label="Semana anterior">←</button>
+        <button class="nav-btn" id="next" aria-label="Próxima semana">→</button>
+      </div>
+      <button class="pill-btn" id="openInfo" title="Banca, TRANSPETRO e ajuda">?</button>
+      <button class="pill-btn" id="offline" title="Baixar para ler sem internet">⤓ Offline</button>
+      <button class="pill-btn" id="openErrors">Erros <span id="errCount">0</span></button>
+      <button class="pill-btn accent" id="save" hidden>Gravar</button>
+    </div>
+  </nav>
+
+  <p class="ro-banner">
+    <span>📱</span>
+    <span><b>Modo leitura.</b> No celular é assim mesmo — o progresso aparece, as alterações ficam para o computador.<br>    <b>No computador?</b> O servidor local não está rodando: feche esta aba e comece pelo <code>iniciar.bat</code>. Com ele, a gravação funciona em qualquer navegador, Brave incluído.</span>
+  </p>
+
+  <header class="shell reveal">
+    <div class="core hero">
+      <div class="hero-copy">
+        <span class="eyebrow" id="eyebrow">Ênfase 4 · Infraestrutura</span>
+        <h1>Doze semanas, e a hora vira ponto.</h1>
+        <p id="heroText">Cinco blocos concentram 70% dos pontos técnicos. O calendário abaixo já respeita essa alocação: abra o dia, siga os tópicos, termine em questões e registre o que errou.</p>
+        <div class="week-rule">
+          <span>90 min · seg–sex</span><span>120 min · sáb–dom</span><span>11h30 por semana</span><span>últimos 30 min = questões</span>
+        </div>
+      </div>
+      <div class="stats" aria-label="Situação geral">
+        <div class="stat" style="--c:var(--danger)"><b>Faltam</b><strong id="daysLeft">—</strong><small id="proofDate">dias para a prova</small></div>
+        <div class="stat" style="--c:var(--jade)"><b>Sessões</b><strong id="doneAll">—</strong><small>concluídas de 84</small></div>
+        <div class="stat" style="--c:var(--warn)"><b>Acerto</b><strong id="hitRate">—</strong><small id="hitDetail">nenhuma questão registrada</small></div>
+        <div class="stat" style="--c:var(--jade)"><b>Erros</b><strong id="errTotal">—</strong><small>registrados no painel</small></div>
+        <div class="stat wide"><b>As 12 semanas</b><div class="bars" id="weekBars"></div><small id="barsHint">cada barra é uma semana; a altura é o quanto você concluiu</small></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="shell week-bar reveal">
+    <div><h2 id="weekTitle" aria-live="polite"></h2><p id="weekMeta"></p></div>
+    <div class="week-tools">
+      <span class="week-count" id="weekCount">SEMANA 01 / 12</span>
+      <span class="week-count" id="weekHit" title="Acerto acumulado nas sessões desta semana">—</span>
+      <label class="select-shell"><select id="weekSelect" aria-label="Escolher semana"></select></label>
+    </div>
+  </section>
+
+  <main class="calendar" id="calendar"></main>
+  <div class="legend" id="legend"></div>
+</div>
+
+<!-- ---------- diálogo do dia ---------- -->
+<dialog id="detail" aria-labelledby="dialogTitle">
+  <div class="dialog-shell"><div class="dialog-core">
+    <header class="dialog-head">
+      <div><div class="kicker" id="dialogKicker"></div><h2 id="dialogTitle"></h2></div>
+      <button class="close" id="close" aria-label="Fechar">×</button>
+    </header>
+    <div class="dialog-body">
+      <p class="section-label">Tópicos da sessão</p>
+      <div class="node-list" id="nodeList"></div>
+
+      <p class="section-label">Desempenho</p>
+      <div class="field-row">
+        <label class="field"><span>Acertos</span>
+          <input type="number" id="qHits" min="0" step="1" inputmode="numeric" placeholder="0"></label>
+        <label class="field"><span>Erros</span>
+          <input type="number" id="qMiss" value="0" readonly tabindex="-1"
+                 title="Vem da lista de erros abaixo"></label>
+        <label class="field"><span>Questões feitas</span>
+          <input type="number" id="qTotal" value="0" readonly tabindex="-1"
+                 title="Acertos + erros. Calculado, não editável."></label>
+      </div>
+      <p class="hint" id="qHint">Informe os acertos; cada erro registrado abaixo entra no total sozinho.</p>
+
+      <p class="section-label">Observações</p>
+      <textarea id="notes" placeholder="O que ficou claro, o que ficou pela metade, o que revisar antes da prova."></textarea>
+
+      <p class="section-label">Erros desta sessão</p>
+      <div class="err-list" id="errList"></div>
+      <div class="err-add" id="errAdd">
+        <div class="field-row">
+          <label class="field"><span>Questão</span><input id="eQ" placeholder="ex.: 2023 Q42"></label>
+          <label class="field"><span>Assunto</span><input id="eSubj" placeholder="ex.: assinatura digital"></label>
+        </div>
+        <label class="field"><span>Por que errei</span><input id="eWhy" placeholder="confundi assinatura com certificado"></label>
+        <label class="field"><span>Tipo de distrator</span><input id="eTag" placeholder="ex.: troca de conceitos próximos" list="tagList"></label>
+        <datalist id="tagList">
+          <option value="troca de conceitos próximos"><option value="quantificador absoluto (sempre/nunca)">
+          <option value="inversão de causa e efeito"><option value="termo correto no lugar errado">
+          <option value="detalhe numérico trocado"><option value="li rápido demais">
+          <option value="não sabia o conteúdo"><option value="cansaço / desatenção">
+        </datalist>
+        <button class="pill-btn" id="errAddBtn">+ Registrar erro</button>
+      </div>
+
+      <div class="dialog-actions">
+        <button class="pill-btn accent" id="toggleDone">Marcar como concluída</button>
+        <button class="pill-btn" id="closeFooter">Fechar</button>
+      </div>
+    </div>
+  </div></div>
+</dialog>
+
+<!-- ---------- painel de erros ---------- -->
+<dialog id="errPanel" aria-labelledby="errPanelTitle">
+  <div class="dialog-shell"><div class="dialog-core" style="--accent:var(--danger)">
+    <header class="dialog-head">
+      <div><div class="kicker">Base de erros</div><h2 id="errPanelTitle">Tudo que você já errou</h2></div>
+      <button class="close" id="errClose" aria-label="Fechar">×</button>
+    </header>
+    <div class="dialog-body">
+      <p class="hint" id="errSummary"></p>
+      <p class="section-label">Filtrar por assunto</p>
+      <div class="panel-filters" id="errFilters"></div>
+      <div class="err-list" id="errAll"></div>
+    </div>
+  </div></div>
+</dialog>
+
+<!-- ---------- banca, TRANSPETRO e ajuda ---------- -->
+<dialog id="infoPanel" aria-labelledby="infoTitulo">
+  <div class="dialog-shell"><div class="dialog-core">
+    <header class="dialog-head">
+      <div><div class="kicker">Referência</div><h2 id="infoTitulo">Sobre a banca</h2></div>
+      <button class="close" id="infoClose" aria-label="Fechar">×</button>
+    </header>
+    <div class="dialog-body">
+      <div class="panel-filters" id="infoTabs">
+        <button class="chip on" data-f="banca">Sobre a banca</button>
+        <button class="chip" data-f="transpetro">Sobre a TRANSPETRO</button>
+        <button class="chip" data-f="ajuda">Ajuda</button>
+      </div>
+      <div class="markdown" id="infoCorpo"></div>
+    </div>
+  </div></div>
+</dialog>
+
+<script src="assets/md.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/offline.js"></script>
+</body>
+</html>

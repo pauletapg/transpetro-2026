@@ -1,0 +1,18 @@
+# material de origem fica fora do repositorio publico (peso + direito autoral)
+*.pdf
+Caderno*.md
+Caderno*.csv
+Prova*.md
+Prova*.csv
+.obsidian/
+Thumbs.db
+desktop.ini
+
+# cache do python
+__pycache__/
+*.pyc
+
+# paginas salvas do TecConcursos: conteudo de terceiros, ~3 MB.
+# O importar_tec.py regenera o assuntos-tec.json a partir delas.
+ferramentas/tec/
+dados/assuntos-tec.json

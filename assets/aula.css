@@ -1,0 +1,189 @@
+/* Estilo das páginas de aula. Todas as aulas usam este arquivo:
+   mexeu aqui, mudou o visual de todas de uma vez. */
+:root{
+  color-scheme:dark;
+  --bg:#050907;--ink:#f7f5ee;--muted:#91a39b;--jade:#7ff0b8;--jade-2:#33b97b;
+  --hair:rgba(232,255,243,.09);--warn:#ffcf70;--danger:#ff8f8f;--accent:var(--jade);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}   /* regras de display nao podem vencer o atributo */
+html{background:var(--bg);scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);
+  font:16px/1.68 "Geist","Aptos Display",Bahnschrift,sans-serif;
+  background:radial-gradient(circle at 10% -8%,rgba(51,185,123,.13),transparent 32rem),
+             radial-gradient(circle at 88% 4%,rgba(119,185,255,.08),transparent 34rem),var(--bg);
+}
+a{color:var(--jade);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--jade);outline-offset:4px}
+
+.aula{width:min(820px,calc(100% - 34px));margin:auto;padding:22px 0 90px}
+
+/* navegação */
+.aula-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.nav-space{flex:1}
+.back{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:0;border-radius:999px;
+  background:rgba(255,255,255,.06);color:var(--muted);font:11px "Cascadia Code",monospace;cursor:pointer;
+  transition:transform 460ms var(--ease),background 460ms var(--ease),color 460ms var(--ease)}
+.back:hover{background:rgba(127,240,184,.12);color:var(--jade);text-decoration:none}
+.aula-nav>.back:first-child:hover{transform:translateX(-3px)}
+
+/* cabeçalho */
+.aula-head{margin:26px 0 40px;padding:34px;border-radius:28px;border-top:2px solid var(--accent);
+  background:linear-gradient(155deg,rgba(19,29,24,.99),rgba(8,14,11,.99));
+  box-shadow:inset 0 1px rgba(255,255,255,.06),0 30px 90px rgba(0,0,0,.22)}
+.aula-head .tag{display:inline-flex;padding:6px 11px;border-radius:999px;background:color-mix(in srgb,var(--accent) 12%,transparent);
+  color:var(--accent);font:800 10px "Cascadia Code",monospace;letter-spacing:.17em;text-transform:uppercase}
+.aula-head h1{margin:17px 0 12px;font:500 clamp(30px,4.4vw,46px)/1.06 "Fraunces","Bodoni MT",serif;letter-spacing:-.045em}
+.aula-head p{margin:0;color:var(--muted);font-size:14.5px;max-width:62ch}
+.aula-head .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.aula-head .meta span{padding:7px 11px;border-radius:11px;background:rgba(255,255,255,.05);
+  color:#dce6e1;font:11px "Cascadia Code",monospace}
+
+/* texto */
+h2{margin:52px 0 4px;font:500 27px/1.2 "Fraunces","Bodoni MT",serif;letter-spacing:-.035em}
+h2:before{content:"";display:block;width:38px;height:2px;margin-bottom:16px;border-radius:2px;
+  background:linear-gradient(90deg,var(--accent),transparent)}
+h3{margin:32px 0 8px;font-size:17.5px;letter-spacing:-.02em}
+p{margin:14px 0}
+strong{color:#fff;font-weight:650}
+em{color:var(--jade);font-style:normal;font-weight:600}
+ul,ol{margin:14px 0;padding-left:22px}
+li{margin:7px 0}
+li::marker{color:var(--accent)}
+hr{margin:44px 0;border:0;height:1px;background:var(--hair)}
+
+/* tabela */
+.tbl{overflow-x:auto;margin:22px 0;border-radius:18px;box-shadow:inset 0 0 0 1px var(--hair)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:460px}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--hair);vertical-align:top}
+th{background:rgba(255,255,255,.045);color:var(--accent);font:800 10px "Cascadia Code",monospace;
+  letter-spacing:.13em;text-transform:uppercase}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:rgba(255,255,255,.022)}
+
+/* código */
+code{padding:2px 6px;border-radius:6px;background:rgba(127,240,184,.09);color:var(--jade);
+  font:.88em "Cascadia Code",Consolas,monospace}
+pre{margin:20px 0;padding:19px 21px;border-radius:17px;overflow-x:auto;background:#0a120e;
+  box-shadow:inset 0 0 0 1px var(--hair)}
+pre code{padding:0;background:none;color:#dce6e1;font-size:13px;line-height:1.62}
+
+/* caixas */
+.box{margin:24px 0;padding:19px 22px;border-radius:18px;border-left:3px solid var(--c,var(--jade));
+  background:color-mix(in srgb,var(--c,var(--jade)) 7%,transparent)}
+.box>b{display:block;margin-bottom:7px;color:var(--c,var(--jade));
+  font:800 10px "Cascadia Code",monospace;letter-spacing:.15em;text-transform:uppercase}
+.box p:first-of-type{margin-top:0}.box p:last-child{margin-bottom:0}
+.box.banca{--c:var(--jade)}
+.box.trap{--c:var(--danger)}
+.box.nota{--c:#77b9ff}
+.box.decor{--c:var(--warn)}
+
+/* alternativas de questão: qualquer lista que tenha uma resposta certa
+   (markdown: "- [ ] errada" / "- [x] correta") */
+ul:has(> li.ok){counter-reset:alt;list-style:none;padding-left:0;margin:16px 0}
+ul:has(> li.ok)>li{counter-increment:alt;position:relative;margin:9px 0;padding:11px 14px 11px 44px;
+  border-radius:12px;background:rgba(255,255,255,.03);font-size:14.5px}
+ul:has(> li.ok)>li:before{content:counter(alt,upper-alpha);position:absolute;left:15px;top:11px;
+  color:var(--muted);font:800 11px "Cascadia Code",monospace}
+ul:has(> li.ok)>li::marker{content:""}
+/* a alternativa certa NAO se destaca ate voce abrir o comentario */
+.q{margin:26px 0;padding:22px;border-radius:20px;background:rgba(255,255,255,.03);
+  box-shadow:inset 0 0 0 1px var(--hair)}
+.q>h3:first-child{margin-top:0;color:var(--accent);
+  font:800 11px "Cascadia Code",monospace;letter-spacing:.12em;text-transform:uppercase}
+.q.revelada li.ok{background:rgba(127,240,184,.1);box-shadow:inset 0 0 0 1px rgba(127,240,184,.22)}
+.q.revelada li.ok:before{color:var(--jade)}
+
+/* caderno de gabaritos: existe so no PDF */
+.gabaritos{display:none}
+.gab-item{break-inside:avoid;margin:0 0 18pt}
+
+/* destaque e riscado */
+mark{padding:1px 4px;border-radius:5px;background:rgba(255,207,112,.22);color:var(--ink)}
+del{color:var(--muted)}
+blockquote{margin:20px 0;padding:4px 0 4px 20px;border-left:2px solid var(--hair);color:var(--muted)}
+blockquote p:first-child{margin-top:0}blockquote p:last-child{margin-bottom:0}
+img{max-width:100%;height:auto;border-radius:14px;margin:18px 0}
+details{margin-top:16px;padding:15px 18px;border-radius:15px;background:rgba(255,255,255,.035)}
+summary{cursor:pointer;color:var(--jade);font:700 12.5px "Cascadia Code",monospace;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"▸ ";transition:transform 300ms}
+details[open] summary:before{content:"▾ "}
+details p{font-size:14px}
+details p:last-child{margin-bottom:0}
+
+/* checklist da véspera */
+.check{margin:24px 0;padding:24px;border-radius:20px;background:linear-gradient(155deg,rgba(127,240,184,.08),rgba(255,255,255,.02));
+  box-shadow:inset 0 0 0 1px rgba(127,240,184,.16)}
+.check>b{display:block;margin-bottom:14px;color:var(--jade);font:800 10px "Cascadia Code",monospace;
+  letter-spacing:.15em;text-transform:uppercase}
+.check ul{list-style:none;padding:0;margin:0}
+.check li{position:relative;margin:11px 0;padding-left:30px;font-size:14.5px}
+.check li:before{content:"◇";position:absolute;left:6px;color:var(--jade)}
+
+/* PDF: o botão ⎙ chama window.print(). Fundo branco, e o gabarito sai de
+   perto da questão — vira um caderno em página própria no fim. */
+@media print{
+  @page{margin:16mm 14mm}
+  html,body{background:#fff!important;color:#111!important;font-size:11pt}
+  .aula{width:100%;padding:0}
+  .aula-nav{display:none}
+  .aula-head{padding:0 0 14pt;margin:0 0 18pt;border:0;border-bottom:2pt solid #333;
+    background:none;box-shadow:none;border-radius:0}
+  .aula-head h1{font-size:22pt;margin:8pt 0}
+  .aula-head p,.tag,.meta span{color:#444!important}
+  .meta span,.tag{background:#f0f0f0;color:#333!important}
+  h2,h3{color:#111;break-after:avoid}
+  h2:before{background:#333}
+  a{color:#111;text-decoration:underline}
+  .box,.check,pre,.tbl{background:#fafafa!important;box-shadow:none;border:1pt solid #ddd;
+    break-inside:avoid}
+  .box>b,.check>b,summary,code,em,li::marker,.check li:before{color:#0a5c38!important}
+  code{background:#f0f0f0}
+  th{background:#eee;color:#333!important}
+  th,td{border-bottom:1pt solid #ddd}
+  /* No papel a resposta NAO pode aparecer junto da questao.
+     Todas as alternativas ficam identicas, inclusive a certa e inclusive
+     quando a secao ficou marcada como "revelada" na tela antes de imprimir.
+     O !important e a especificidade dupla sao necessarios: sem eles a regra
+     .q.revelada li.ok vence e o contorno verde vaza para o PDF. */
+  .q ul>li,
+  .q ul>li.ok,
+  .q.revelada ul>li,
+  .q.revelada ul>li.ok{
+    background:#fafafa!important;
+    box-shadow:none!important;
+    border:1pt solid #e6e6e6!important;
+    color:#111!important;
+  }
+  .q ul>li:before,
+  .q.revelada ul>li.ok:before{color:#555!important}
+  .q details{display:none!important}
+  .q{background:#fff!important;border:1pt solid #ddd}
+  .q>h3:first-child{color:#0a5c38!important}
+  .box.fonte{background:#f4f6f8!important;border:1pt solid #dde3e8!important}
+  .box.fonte,.box.fonte p,.box.fonte a{color:#444!important}
+  .box.fonte>b{color:#556!important}
+  /* os comentarios viram um caderno de gabaritos em pagina propria */
+  .gabaritos{display:block!important;break-before:page}
+  .gabaritos h2{font-size:18pt}
+  .gab-item h3{color:#0a5c38!important;margin-top:14pt}
+  .gab-item{border-bottom:1pt solid #eee;padding-bottom:10pt}
+  .q,.box,.check{break-inside:avoid}
+}
+@media (max-width:600px){
+  .aula-head{padding:24px}
+  body{font-size:15.5px}
+}
+
+/* Fonte da questão: metadado, fica discreto e não compete com o enunciado.
+   Vai sempre no topo da questão, antes do enunciado. */
+.box.fonte{--c:#8fa3b8;margin:0 0 18px;padding:12px 16px;border-radius:14px;font-size:13px}
+.box.fonte>b{margin-bottom:4px;font-size:9px;letter-spacing:.16em}
+.box.fonte p{margin:3px 0;color:#bcc9d3}
+.box.fonte a{color:#a9c8e8}
+.q>.box.fonte:first-of-type{margin-top:14px}
