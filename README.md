@@ -14,8 +14,13 @@ da instalação padrão.
 servidor **minimizado** e abre o navegador. Abra a sessão do dia, siga os
 tópicos, registre questões feitas e acertos, anote os erros.
 
-**Publicar** — clique em **Gravar** (ou `Ctrl+S`) e depois dê dois cliques em
-`publicar.bat`. Em cerca de um minuto o celular mostra a versão nova.
+**Publicar** — clique em **↑ Publicar** no topo da página. Ele grava o que
+estiver pendente, faz o commit e envia para o GitHub; em cerca de um minuto o
+celular mostra a versão nova. O `publicar.bat` faz o mesmo, fora do navegador.
+
+> **Gravar ≠ Publicar.** Gravar escreve no arquivo do computador e acontece
+> sozinho a cada alteração. Publicar manda para o GitHub — é só isso que o
+> celular enxerga. Gravar sem publicar deixa o celular desatualizado.
 
 **Parar** — `parar.bat`, ou feche a janela minimizada do servidor.
 

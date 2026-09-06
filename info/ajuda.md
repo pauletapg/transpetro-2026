@@ -6,11 +6,20 @@ titulo: Ajuda
 
 1. **`iniciar.bat`** — indexa as aulas, sobe o servidor e abre o navegador.
 2. Abra a sessão do dia, siga os tópicos, abra as aulas.
-3. Registre **questões feitas** e **acertos**, escreva as **observações**.
+3. Registre os **acertos** e escreva as **observações**.
 4. Cada questão errada vira um **erro** no painel — assunto, causa e tipo de
    distrator. Isso alimenta a revisão da semana 12.
-5. **Gravar** (ou `Ctrl+S`).
-6. **`publicar.bat`** — manda para o GitHub. Em ~1 minuto o celular vê.
+5. **↑ Publicar** — no topo da página.
+
+> [!nota] Gravar e Publicar são coisas diferentes
+> **Gravar** escreve no arquivo do seu computador (`dados/progresso.json`).
+> É automático: qualquer alteração é gravada sozinha em menos de um segundo.
+>
+> **↑ Publicar** manda esse arquivo para o GitHub. **É só isto que faz o
+> celular ver a versão nova** — em cerca de um minuto.
+>
+> Se você grava mas nunca publica, o computador fica em dia e o celular
+> continua mostrando a última versão publicada.
 
 ## Quem pode alterar o quê
 
