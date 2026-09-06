@@ -46,19 +46,32 @@ self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
 
-  const ehDado = /\/dados\/.*\.json$/.test(new URL(req.url).pathname);
+  const caminho = new URL(req.url).pathname;
+  const ehDado = /\/dados\/.*\.json$/.test(caminho);
+
+  /* O CODIGO DO APP vai pela rede primeiro. Sem isto o cache pode servir um
+     index.html de uma versao junto com um app.js de outra, e a pagina quebra
+     num erro de elemento inexistente. O cache continua sendo a reserva
+     quando nao ha internet — o offline nao perde nada. */
+  const ehCodigo = req.mode === 'navigate' ||
+                   /\.(html|js|css)$/.test(caminho);
 
   e.respondWith((async () => {
     const cache = await caches.open(CACHE);
 
-    // dados mudam a cada publicação: tenta a rede primeiro, cai no cache se estiver offline
-    if (ehDado) {
+    // dados e código mudam a cada publicação: rede primeiro, cache se estiver offline
+    if (ehDado || ehCodigo) {
       try {
         const fresca = await fetch(req);
         if (fresca.ok) cache.put(req, fresca.clone());
         return fresca;
       } catch (e) {
-        return (await cache.match(req)) || Response.error();
+        const guardada = await cache.match(req, { ignoreSearch: true });
+        if (guardada) return guardada;
+        // navegação offline sem esta página no cache: entrega o calendário
+        return req.mode === 'navigate'
+          ? (await cache.match('./index.html')) || Response.error()
+          : Response.error();
       }
     }
 

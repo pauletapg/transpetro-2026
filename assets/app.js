@@ -4,6 +4,16 @@
    Em qualquer outro lugar — celular incluído — a página abre em modo leitura. */
 
 const $ = q => document.querySelector(q);
+
+/* Liga um evento sem quebrar se o elemento nao existir.
+   Necessario porque o service worker pode servir um index.html de uma
+   versao e um app.js de outra: sem isto, um botao novo derruba a pagina
+   inteira num erro de null. */
+function on(sel, evento, fn) {
+  const el = document.querySelector(sel);
+  if (el) el.addEventListener(evento, fn);
+  return el;
+}
 const LS_KEY = 'transpetro-2026-progresso';
 /* Como esta pagina consegue gravar:
      'api' -> servidor local do iniciar.bat (qualquer navegador, inclusive Brave)
@@ -540,32 +550,32 @@ async function abrirInfo(qual) {
 
 /* ---------------- eventos ---------------- */
 
-$('#prev').addEventListener('click', () => { if (week > 0) { week--; render(); } });
-$('#next').addEventListener('click', () => { if (week < plano.semanas.length - 1) { week++; render(); } });
-$('#weekSelect').addEventListener('change', e => { week = Number(e.target.value); render(); });
-$('#close').addEventListener('click', closeDetail);
-$('#closeFooter').addEventListener('click', closeDetail);
-$('#detail').addEventListener('click', e => { if (e.target === $('#detail')) closeDetail(); });
-$('#detail').addEventListener('cancel', e => { e.preventDefault(); closeDetail(); });
-$('#errAddBtn').addEventListener('click', addErr);
-$('#eTag').addEventListener('keydown', e => { if (e.key === 'Enter') addErr(); });
-$('#toggleDone').addEventListener('click', () => {
+on('#prev', 'click', () => { if (week > 0) { week--; render(); } });
+on('#next', 'click', () => { if (week < plano.semanas.length - 1) { week++; render(); } });
+on('#weekSelect', 'change', e => { week = Number(e.target.value); render(); });
+on('#close', 'click', closeDetail);
+on('#closeFooter', 'click', closeDetail);
+on('#detail', 'click', e => { if (e.target === $('#detail')) closeDetail(); });
+on('#detail', 'cancel', e => { e.preventDefault(); closeDetail(); });
+on('#errAddBtn', 'click', addErr);
+on('#eTag', 'keydown', e => { if (e.key === 'Enter') addErr(); });
+on('#toggleDone', 'click', () => {
   const s = ensure(openSession.wi, openSession.di);
   s.feito = !s.feito;
   $('#toggleDone').textContent = s.feito ? 'Reabrir sessão' : 'Marcar como concluída';
   saveFields(); touch(); render();
 });
-['#qHits', '#notes'].forEach(s => $(s).addEventListener('change', saveFields));
-$('#save').addEventListener('click', () => save());
-$('#publish').addEventListener('click', publicar);
-$('#openErrors').addEventListener('click', openErrPanel);
-$('#openInfo').addEventListener('click', () => abrirInfo('banca'));
-$('#infoClose').addEventListener('click', () => $('#infoPanel').close());
-$('#infoPanel').addEventListener('click', e => { if (e.target === $('#infoPanel')) $('#infoPanel').close(); });
+['#qHits', '#notes'].forEach(sel => on(sel, 'change', saveFields));
+on('#save', 'click', () => save());
+on('#publish', 'click', publicar);
+on('#openErrors', 'click', openErrPanel);
+on('#openInfo', 'click', () => abrirInfo('banca'));
+on('#infoClose', 'click', () => $('#infoPanel').close());
+on('#infoPanel', 'click', e => { if (e.target === $('#infoPanel')) $('#infoPanel').close(); });
 document.querySelectorAll('#infoTabs .chip')
   .forEach(c => c.addEventListener('click', () => abrirInfo(c.dataset.f)));
-$('#errClose').addEventListener('click', () => $('#errPanel').close());
-$('#errPanel').addEventListener('click', e => { if (e.target === $('#errPanel')) $('#errPanel').close(); });
+on('#errClose', 'click', () => $('#errPanel').close());
+on('#errPanel', 'click', e => { if (e.target === $('#errPanel')) $('#errPanel').close(); });
 
 document.addEventListener('keydown', e => {
   if (e.target.matches('input,textarea,select')) return;

@@ -152,7 +152,7 @@ function vazio(titulo, texto) {
   $('#corpo').innerHTML = `<div class="box nota"><b>Ainda não existe</b><p>${texto}</p></div>`;
 }
 
-$('#imprimir').addEventListener('click', () => window.print());
+document.querySelector('#imprimir')?.addEventListener('click', () => window.print());
 document.addEventListener('keydown', e => {
   if (e.target.matches('input,textarea')) return;
   if (e.key === 'ArrowLeft' && !$('#anterior').hidden) $('#anterior').click();
