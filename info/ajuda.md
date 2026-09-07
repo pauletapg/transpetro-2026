@@ -39,12 +39,31 @@ sobrescreveria na próxima gravação e você perderia o registro.
 > arquivo, então **no Brave o servidor é obrigatório** — mas com ele funciona
 > normalmente.
 
-## Escrever uma aula
+## Criar uma aula
+
+As aulas não se escrevem sozinhas — cada uma é pedida numa conversa com o
+Claude Code. O texto pronto do pedido está em **`PROMPT-AULA.md`**, na raiz do
+projeto: copie o primeiro bloco, troque o id do tópico e cole.
+
+Três coisas que fazem diferença nesse pedido:
+
+1. **Abra o Claude Code na pasta de cima** (`CESGRANRIO TRANSPETRO`), não na
+   `estudos-transpetro`. Os cadernos, as provas e os índices `.csv` estão lá.
+   Na pasta errada, a aula sai sem as questões reais das provas.
+2. **O calendário base é o `dados/plano.json`** — 12 semanas, 84 sessões, de
+   07/09 até a prova em 29/11. É de lá que saem o título do tópico, a semana,
+   a disciplina e a duração da sessão.
+3. **Questões com alternativas em imagem** entram na aula com um bloco
+   destacado dizendo qual questão é e em que PDF está, para você recortar e
+   salvar em `aulas/img/`. São 2 nas provas e 28 no caderno de TI,
+   concentradas em Banco de Dados e Programação.
+
+### Se preferir escrever à mão
 
 1. Copie `aulas/_MODELO.md` para a pasta da disciplina.
 2. Dê um nome legível: `aulas/redes/Modelo OSI - as sete camadas.md`.
-3. No frontmatter, ponha o **`id` do tópico** — é só isso que liga o arquivo ao
-   calendário. Pasta e nome do arquivo são livres.
+3. No frontmatter, ponha o **`id` do tópico** — é só isso que liga o arquivo
+   ao calendário. Pasta e nome do arquivo são livres.
 
 ```yaml
 ---
@@ -62,9 +81,13 @@ escrita com base no perfil da banca. As aulas trazem, sempre que existirem, as
 questões de **2018 e 2023** relacionadas ao assunto, com o enunciado inteiro — e
 a teoria da aula é suficiente para resolvê-las.
 
-O gabarito **não fica à vista**: responda primeiro, clique em *Comentário* depois.
-No PDF, os comentários saem de perto das questões e viram um **caderno de
-gabaritos** no fim do documento.
+O gabarito **não fica à vista**: responda primeiro, clique em *Comentário*
+depois. No PDF, os comentários saem de perto das questões e viram um **caderno
+de gabaritos** no fim do documento.
+
+Quando a questão original tem as alternativas em figura, a aula mostra um bloco
+tracejado em amarelo com a referência do PDF. É pendência sua: recorte, salve em
+`aulas/img/` e troque o bloco pela imagem.
 
 ## Quando a aula não dá conta da questão
 

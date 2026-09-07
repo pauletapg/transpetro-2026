@@ -61,9 +61,14 @@ def questoes_de_prova():
                     continue
                 # "TI - Redes de Computadores - Modelo OSI" -> folha "Modelo OSI"
                 folha = assunto.split(' - ')[-1]
-                origem = 'prova %s Q%s (gab %s)' % (
+                # alternativas em imagem: a questao existe, mas o texto do .md
+                # nao traz as alternativas. Precisa de recorte manual do PDF.
+                img = (row.get('alt_em_imagem') or '').strip().upper() == 'S'
+                origem = ('prova %s Q%s (gab %s)%s' % (
                     row.get('ano') or ('2018' if '2018' in nome else '2023'),
-                    row.get('n', '?'), row.get('gabarito', '?')) if eh_prova else 'caderno'
+                    row.get('n', '?'), row.get('gabarito', '?'),
+                    '  [ALTERNATIVAS EM IMAGEM]' if img else '')
+                    ) if eh_prova else ('caderno-img' if img else 'caderno')
                 mapa[normaliza(folha)].append(origem)
         except Exception as e:
             print('  (nao consegui ler %s: %s)' % (nome, e))
@@ -142,12 +147,15 @@ def main():
         linhas.append('    %s' % a['caminho'])
         linhas.append('    %d questoes no TecConcursos  ·  hierarquia %s' % (a['questoes'], a['hierarquia']))
         linhas.append('    https://www.tecconcursos.com.br/materias/%s' % a['url'])
-        naprova = [q for q in provas.get(normaliza(a['nome']), []) if q != 'caderno']
-        nocaderno = provas.get(normaliza(a['nome']), []).count('caderno')
-        if naprova:
-            linhas.append('    NAS PROVAS: %s' % ', '.join(naprova))
+        todas = provas.get(normaliza(a['nome']), [])
+        naprova = [q for q in todas if not q.startswith('caderno')]
+        nocaderno = todas.count('caderno') + todas.count('caderno-img')
+        img_caderno = todas.count('caderno-img')
+        for q in naprova:
+            linhas.append('    NA PROVA: %s' % q)
         if nocaderno:
-            linhas.append('    no seu caderno CESGRANRIO: %d questao(oes)' % nocaderno)
+            extra = ('  (%d com alternativas em imagem)' % img_caderno) if img_caderno else ''
+            linhas.append('    no seu caderno CESGRANRIO: %d questao(oes)%s' % (nocaderno, extra))
         linhas.append('')
 
     if len(achados) > 25:

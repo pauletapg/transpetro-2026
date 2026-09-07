@@ -1,7 +1,7 @@
 ---
 id: X00
 titulo: Título da aula
-resumo: Uma frase dizendo o que você vai saber fazer ao terminar. Concreta, verificável.
+resumo: Uma frase dizendo o que você vai saber ao terminar. Concreta, verificável.
 tempo: 90 min
 ---
 
@@ -138,6 +138,19 @@ REGRA DAS QUESTÕES — vale para toda aula:
 
 5. A alternativa correta é marcada com [x]. Ela NÃO aparece destacada na tela
    até você abrir o comentário, e no PDF vai para o caderno de gabaritos do fim.
+
+6. QUESTÕES COM ALTERNATIVAS EM IMAGEM (alt_em_imagem = S no índice): não
+   pule. Traga o enunciado, que existe em texto, e no lugar das alternativas
+   ponha um bloco [!imagem] dizendo qual questão é e em que PDF está, para
+   recortar depois:
+
+      > [!imagem] Alternativas da questão 25 da prova de 2018
+      > São diagramas MER e não saíram na extração. Recorte do PDF da prova
+      > de 2018, questão 25, e salve em `aulas/img/2018-q25.png`. Depois
+      > troque este bloco por `![Alternativas](../img/2018-q25.png)`.
+      > Gabarito: D.
+
+   No fim da aula, liste todas as figuras pendentes juntas.
 -->
 
 ### Q01 · TRANSPETRO 2018 · questão NN
@@ -209,10 +222,10 @@ filtro de banca e resolva as demais como treino de leitura.
 
 **Complementos, para o resto da semana**
 
-| Assunto | Hierarquia | Questões | Por quê |
-|---|---|---:|---|
-| `Pai` › **`Assunto vizinho`** | `00.00` | N | Uma linha dizendo por que complementa |
+| Assunto                       | Hierarquia | Questões | Por quê                               |
+| ----------------------------- | ---------- | -------: | ------------------------------------- |
+| `Pai` › **`Assunto vizinho`** | `00.00`    |        N | Uma linha dizendo por que complementa |
 
 > [!checklist]
-> - Cinco linhas, no máximo.
+> - Oito linhas, no máximo.
 > - O que reler em dois minutos na véspera.

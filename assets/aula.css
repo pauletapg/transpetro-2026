@@ -168,6 +168,7 @@ details p:last-child{margin-bottom:0}
   .box.fonte{background:#f4f6f8!important;border:1pt solid #dde3e8!important}
   .box.fonte,.box.fonte p,.box.fonte a{color:#444!important}
   .box.fonte>b{color:#556!important}
+  .box.imagem{border:1pt dashed #bb9!important;background:#fffdf5!important}
   /* os comentarios viram um caderno de gabaritos em pagina propria */
   .gabaritos{display:block!important;break-before:page}
   .gabaritos h2{font-size:18pt}
@@ -187,3 +188,8 @@ details p:last-child{margin-bottom:0}
 .box.fonte p{margin:3px 0;color:#bcc9d3}
 .box.fonte a{color:#a9c8e8}
 .q>.box.fonte:first-of-type{margin-top:14px}
+
+/* Questão cujas alternativas estão em imagem na prova original.
+   Fica chamativo de propósito: é um pendência sua, não do conteúdo. */
+.box.imagem{--c:var(--warn);border-left-style:dashed}
+.box.imagem>b:after{content:" · recorte do PDF"}

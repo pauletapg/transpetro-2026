@@ -23,8 +23,11 @@ CONTEXTO — leia antes de escrever:
 - perfil-da-banca-CESGRANRIO-TI.md — taxonomia de distratores.
 - prioridades.md — peso do bloco e quanto tempo ele merece.
 - mapa-edital-2026.md — o item do edital ao qual o tópico corresponde.
-- estudos-transpetro/dados/plano.json — o título exato do tópico, a semana,
-  a disciplina e a duração da sessão.
+- estudos-transpetro/dados/plano.json — ESTE É O CALENDÁRIO BASE. 12 semanas,
+  84 sessões, de 07/09/2026 até a prova em 29/11/2026. Dele saem o título
+  exato do tópico, a semana a que pertence, a disciplina, a cor e a duração
+  da sessão (90 min seg–sex, 120 min sáb–dom). Não invente tópico que não
+  esteja lá; se eu pedir um id que não existe, me avise em vez de improvisar.
 
 ANTES DE ESCREVER, rode e use o resultado:
   python estudos-transpetro/ferramentas/assuntos.py <palavra-chave-do-tópico>
@@ -41,6 +44,30 @@ QUESTÕES DAS PROVAS — obrigatório:
   compense com questões inéditas bem construídas.
 - Toda questão abre com bloco > [!fonte], começando pela palavra "Fonte:".
 - Questão escrita por você é marcada como "Inédita", sempre.
+
+QUESTÕES COM ALTERNATIVAS EM IMAGEM — não pule:
+Parte das questões tem as alternativas como figura, e o .md extraído não traz
+o texto delas. No índice elas aparecem com `alt_em_imagem = S`. O
+`assuntos.py` já as marca com [ALTERNATIVAS EM IMAGEM].
+
+NÃO as ignore. Inclua a questão assim:
+  - o enunciado, que existe em texto;
+  - no lugar das alternativas, um bloco > [!imagem] dizendo exatamente qual
+    questão é, em que PDF e em que página aproximada eu encontro, para eu
+    recortar e colar depois;
+  - o gabarito e o comentário do que dá para comentar sem ver a figura.
+
+Exemplo do bloco:
+
+    > [!imagem] Alternativas da questão 25 da prova de 2018
+    > As cinco alternativas são diagramas MER e não saíram na extração.
+    > Recorte de "Prova + gabarito 2018 ... .pdf", questão 25, e salve em
+    > `aulas/img/2018-q25.png`. Depois troque este bloco por:
+    > `![Alternativas da questão 25](img/2018-q25.png)`
+    > Gabarito: D.
+
+No fim da aula, liste todas as figuras pendentes num só lugar, para eu
+resolver de uma vez.
 
 A TEORIA TEM QUE BASTAR: depois de escrever as questões, releia a teoria e
 confirme que ela resolve todas sozinha. Se alguma exige algo que a aula não
@@ -77,6 +104,11 @@ sai inventado e o filtro não existe no site.
 
 **Exigir enunciado inteiro.** Aula com "veja a questão 41 de 2018" obriga você
 a abrir outro arquivo no meio do estudo. O enunciado tem que estar ali.
+
+**Não pular as questões com imagem.** São 2 nas provas (2018 Q25, MER, e Q32,
+Árvores) e 28 no caderno de TI, concentradas em Banco de Dados e
+Desenvolvimento — ou seja, nas semanas 6, 7 e 8. Ignorá-las tiraria da aula
+justamente as questões de modelagem e de código, que são as mais difíceis.
 
 **"A teoria tem que bastar".** É a única regra que força a revisão final. Sem
 ela a aula fica com teoria bonita e questões que ela não resolve.

@@ -11,12 +11,13 @@
     decore: 'decor', decor: 'decor', example: 'decor', abstract: 'decor', resumo: 'decor',
     gabarito: 'gab', question: 'gab', pergunta: 'gab',
     checklist: 'check', vespera: 'check', todo: 'check',
-    fonte: 'fonte', origem: 'fonte', source: 'fonte'
+    fonte: 'fonte', origem: 'fonte', source: 'fonte',
+    imagem: 'imagem', figura: 'imagem'
   };
   const TITULO = {
     banca: 'O que a banca cobra', trap: 'Pegadinha', nota: 'Nota',
     decor: 'Decore assim', gab: 'Comentário', check: 'Checklist de véspera',
-    fonte: 'Fonte'
+    fonte: 'Fonte', imagem: 'Falta a imagem'
   };
 
   const SENT = String.fromCharCode(0xE000);   // uso privado: nunca ocorre em texto real
