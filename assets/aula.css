@@ -81,6 +81,8 @@ pre code{padding:0;background:none;color:#dce6e1;font-size:13px;line-height:1.62
 .box.trap{--c:var(--danger)}
 .box.nota{--c:#77b9ff}
 .box.decor{--c:var(--warn)}
+/* analogia: andaime para entender o conceito. Sempre traz "Onde quebra". */
+.box.analogia{--c:#c9a6ff}
 
 /* alternativas de questão: qualquer lista que tenha uma resposta certa
    (markdown: "- [ ] errada" / "- [x] correta") */

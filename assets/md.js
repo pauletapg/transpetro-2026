@@ -9,6 +9,7 @@
     trap: 'trap', pegadinha: 'trap', warning: 'trap', danger: 'trap', bug: 'trap', erro: 'trap',
     nota: 'nota', note: 'nota', info: 'nota', quote: 'nota',
     decore: 'decor', decor: 'decor', example: 'decor', abstract: 'decor', resumo: 'decor',
+    analogia: 'analogia', analogy: 'analogia', metafora: 'analogia',
     gabarito: 'gab', question: 'gab', pergunta: 'gab',
     checklist: 'check', vespera: 'check', todo: 'check',
     fonte: 'fonte', origem: 'fonte', source: 'fonte',
@@ -17,7 +18,7 @@
   const TITULO = {
     banca: 'O que a banca cobra', trap: 'Pegadinha', nota: 'Nota',
     decor: 'Decore assim', gab: 'Comentário', check: 'Checklist de véspera',
-    fonte: 'Fonte', imagem: 'Falta a imagem'
+    fonte: 'Fonte', imagem: 'Falta a imagem', analogia: 'Analogia'
   };
 
   const SENT = String.fromCharCode(0xE000);   // uso privado: nunca ocorre em texto real
