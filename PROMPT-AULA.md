@@ -91,6 +91,12 @@ QUESTÕES — obrigatório. São TRÊS fontes, nesta ordem:
   c) INÉDITAS, escritas por você, só para cobrir o que (a) e (b) deixaram de
      fora — normalmente o conceito que só aparece como distrator.
 
+  A ORDEM DAS QUESTÕES IMPORTA, pela regra das 24 horas do _MODELO.md: no dia
+  em que a aula é lida eu resolvo só DUAS OU TRÊS, como conferência de leitura.
+  As demais viram aquecimento das sessões seguintes e material do sábado. Então
+  ponha na frente as que fecham o conceito central da aula, não as mais fáceis.
+  E diga, no [!nota] do topo, quais são as de hoje e quais ficam para depois.
+
   Em todas as três:
   - ENUNCIADO INTEIRO, as cinco alternativas e a fonte. Nada de "veja a questão
     41 de 2018".

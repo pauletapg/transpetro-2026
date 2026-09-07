@@ -5,11 +5,98 @@ titulo: Ajuda
 ## O ciclo de um dia de estudo
 
 1. **`iniciar.bat`** — indexa as aulas, sobe o servidor e abre o navegador.
-2. Abra a sessão do dia, siga os tópicos, abra as aulas.
-3. Registre os **acertos** e escreva as **observações**.
-4. Cada questão errada vira um **erro** no painel — assunto, causa e tipo de
-   distrator. Isso alimenta a revisão da semana 12.
-5. **↑ Publicar** — no topo da página.
+2. **Aquecimento**: comece pelas questões que ficaram pendentes da aula de
+   ontem, de cabeça, **antes de ler qualquer coisa nova**. Ver *A regra das
+   24 horas*, logo abaixo.
+3. Abra a sessão do dia, siga os tópicos, leia as aulas.
+4. **Conferência**: duas ou três questões da aula de hoje, só para checar se a
+   leitura pegou. O resto não é para hoje.
+5. Registre os **acertos** e escreva as **observações**.
+6. Cada questão errada vira um **erro** no painel — assunto, causa e tipo de
+   distrator. Isso alimenta os domingos e a revisão da semana 12.
+7. **↑ Publicar** — no topo da página.
+
+## A regra das 24 horas
+
+**Responder sobre um texto que você acabou de ler não mede aprendizado.** Mede
+memória de trabalho: o conteúdo ainda está na cabeça porque você fechou a aula
+há dois minutos. Você acerta quase tudo, sente que aprendeu, e na semana
+seguinte descobre que não. É a armadilha mais comum de quem estuda sozinho, e
+ela é traiçoeira justamente porque a sensação é boa.
+
+Por isso a aula não é consumida num bloco só. Ela se espalha em quatro momentos:
+
+| Quando | O quê |
+|---|---|
+| **Início da sessão** | as questões pendentes da aula anterior, sem reler nada antes |
+| **Meio** | a teoria da aula de hoje |
+| **Fim** | 2 ou 3 questões de hoje, como aferição de leitura |
+| **Sábado** | o que sobrou, junto com a bateria do TecConcursos |
+
+O mesmo tempo total, distribuído de outro jeito. A diferença é que toda
+recuperação passa a ter pelo menos um dia de intervalo — e é o intervalo que
+fixa, não a repetição.
+
+> [!nota]
+> Cada aula diz, no callout do topo, quais questões são do dia e quais ficam
+> para depois. Quando a aula for maior que a fatia do calendário — acontece nos
+> assuntos de peso — esse mesmo callout traz o plano de como espalhá-la pela
+> semana.
+
+## Sábado: os últimos 20 minutos sem filtro
+
+As baterias de sábado são por assunto: Redes, Segurança, SQL. Isso treina
+resolver, mas não treina a coisa mais difícil da prova — **descobrir de que
+assunto a questão é**. Na prova real a 41 é OSI, a 44 é máscara de rede e a 48
+é HTTP, sem aviso nenhum.
+
+Por isso, a partir da semana 2, os últimos 20 minutos do bloco de sábado são um
+**bloco misto**: questões de tudo que você já estudou até ali, sem filtro de
+assunto. No TecConcursos, tire o filtro de assunto e deixe só a banca
+**CESGRANRIO** e as matérias já vistas.
+
+## Domingo: refazer fechado, não reler
+
+O domingo é o bloco que mais se perde por falta de método. Cansado, a tentação
+é reabrir a aula e passar o olho — que é o pior uso possível daquela hora.
+
+O jeito certo é sempre o mesmo:
+
+1. Refaça as questões que você errou na semana, **fechadas**, sem olhar o
+   gabarito e sem abrir a aula.
+2. Só nas que errar **de novo** você abre a aula, e lê apenas a seção
+   correspondente.
+3. Se errou de novo por falta de conteúdo, registre com o tipo de distrator
+   **"falta conteúdo na aula"** — isso vira remendo depois, pelo `lacunas.py`.
+
+A partir da semana 3 o domingo acumula também a revisão espaçada das semanas
+anteriores, com o mesmo procedimento. O título de cada domingo no calendário já
+diz quais semanas entram.
+
+## O checklist é para escrever, não para ler
+
+Repare numa coisa: **tudo neste plano é reconhecer.** Questão de múltipla
+escolha te dá cinco opções e pede para apontar uma; ler a aula te dá o texto
+pronto. Em nenhum momento você é obrigado a produzir a resposta do zero — e
+produzir do zero é o que mais fixa.
+
+O conserto custa cinco minutos e usa uma coisa que já existe: o **checklist**
+do fim de cada aula.
+
+Sempre que for revisar um assunto, **antes de abrir a aula**, pegue papel e
+escreva o que você lembra do checklist dela. Só depois abra e compare. O que
+faltou no papel é exatamente o que você acha que sabe e não sabe — e é a
+informação mais útil que uma sessão de revisão pode te dar.
+
+Vale sobretudo para as listas fechadas, que é onde a CESGRANRIO mais cobra:
+
+- as sete camadas do OSI, na ordem, de baixo para cima;
+- `bit → quadro → pacote → segmento`;
+- AH autentica, ESP cifra;
+- os oito tipos de distrator, T1 a T8.
+
+Os fechamentos de bloco no calendário (semanas 2, 5 e 12) já pedem isso
+explicitamente.
 
 > [!nota] Gravar e Publicar são coisas diferentes
 > **Gravar** escreve no arquivo do seu computador (`dados/progresso.json`).

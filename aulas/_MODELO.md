@@ -447,3 +447,18 @@ filtro de banca e resolva as demais como treino de leitura.
 > [!checklist]
 > - Oito linhas, no máximo.
 > - O que reler em dois minutos na véspera.
+
+<!--
+O CHECKLIST É PARA SER ESCRITO DE MEMÓRIA, não lido.
+
+Na revisão, antes de reabrir a aula, escreva no papel o que você lembra do
+checklist e só então compare. Evocar do zero fixa muito mais do que
+reconhecer numa lista pronta — e é a única atividade do plano inteiro que
+exige PRODUZIR em vez de escolher entre cinco alternativas.
+
+Por isso o checklist tem que ser feito de itens EVOCÁVEIS: listas fechadas,
+ordens, pares que se opõem. "As sete camadas na ordem", "AH autentica, ESP
+cifra", "bit -> quadro -> pacote -> segmento". Nada de frase solta que só
+faz sentido lendo.
+-->
+

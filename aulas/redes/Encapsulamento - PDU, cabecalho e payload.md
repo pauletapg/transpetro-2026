@@ -44,18 +44,26 @@ tempo: 45 min
 > some: ele vira a leitura de abertura dos outros dias da semana 1, sempre no dia em que ela
 > serve de base para o tópico daquele dia.
 >
-> | Quando | O que ler | Questões | Custo |
+> Pela **regra das 24 horas** do `_MODELO.md`, as questões de cada trecho não são resolvidas
+> no dia em que ele é lido: elas abrem o dia seguinte, de cabeça, antes de qualquer leitura
+> nova. Responder logo depois de ler mede memória de trabalho, não aprendizado.
+>
+> | Quando | O que ler | Questões (do dia anterior) | Custo |
 > |---|---|---|---|
-> | **Segunda**, nos 19 min que sobram de R01 | seções **1 e 3** (o vocabulário: PDU, SDU, PCI) — pule a 2, que repete o cenário de R01 | **Q03** | 14 + 4 min |
-> | **Terça**, antes de R03/R04 | seções **2, 4, 5 e 6** (as cinco PDUs, a descida, a subida) | Q05, Q06, Q07 | 29 + 12 min |
-> | **Quarta**, antes de R06 | seções **7 e 8** (desencapsulamento e o salto) | Q01, Q12 | 10 + 8 min |
-> | **Quinta**, antes de R07 | seção **9** (MTU, MSS, fragmentação) | Q10, Q13 | 9 + 8 min |
+> | **Segunda**, nos 19 min que sobram de R01 | seções **1 e 3** (o vocabulário: PDU, SDU, PCI) — pule a 2, que repete o cenário de R01 | — | 14 min |
+> | **Terça**, antes de R03/R04 | seções **2, 4, 5 e 6** (as cinco PDUs, a descida, a subida) | **Q03** | 4 + 29 min |
+> | **Quarta**, antes de R06 | seções **7 e 8** (desencapsulamento e o salto) | Q05, Q06, Q07 | 12 + 10 min |
+> | **Quinta**, antes de R07 | seção **9** (MTU, MSS, fragmentação) | Q01, Q12 | 8 + 9 min |
+> | **Sexta**, antes de R09/R10 | nada novo desta aula | Q10, Q13 | 8 min |
 > | **Sábado**, no bloco L02 de 60 min | seções **10 e 11**, as duas tabelas e as pegadinhas | Q02, Q04, Q08, Q09, Q11, Q14 | 22 + 24 min |
 >
-> Terça e sábado são as duas linhas que estouram o dia: terça pede 41 min de um bloco de
-> 90 que já tem R03 e R04, e sábado pede 46 dos 60 do L02. Se precisar cortar, **corte
-> questão, nunca as seções 3 e 4** — elas são o assunto, e as questões voltam no domingo de
-> erros. O checklist do fim é de véspera de prova, não de agora.
+> O deslocamento de um dia arruma de quebra a sobrecarga da terça, que era a linha mais
+> apertada: em vez de 41 min, ela pede 33. A única que ainda estoura é o sábado, com 46 dos
+> 60 min do L02 — e ali a saída é começar pelas questões e deixar a seção 11 (túnel) para o
+> domingo, se faltar tempo.
+>
+> Se precisar cortar, **corte questão, nunca as seções 3 e 4** — elas são o assunto, e as
+> questões voltam no domingo de erros. O checklist do fim é de véspera de prova, não de agora.
 
 ---
 
