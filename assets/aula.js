@@ -30,8 +30,11 @@ async function abrir() {
   // o caminho do arquivo vem do indice: a aula pode estar em qualquer pasta,
   // com qualquer nome. O que liga e o campo "id" do frontmatter.
   const caminho = (indice.arquivos || {})[id];
+  // no-store como nos dois JSON acima: a aula e reescrita por cima, com o
+  // mesmo nome de arquivo, e sem isto o cache do navegador serve a versao
+  // anterior. O sw.js ja guarda a copia para ler offline.
   const texto = caminho
-    ? await fetch(caminho.split('/').map(encodeURIComponent).join('/'))
+    ? await fetch(caminho.split('/').map(encodeURIComponent).join('/'), { cache: 'no-store' })
         .then(r => r.ok ? r.text() : null).catch(() => null)
     : null;
 

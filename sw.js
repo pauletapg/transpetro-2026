@@ -1,7 +1,10 @@
 /* Offline. Depois da primeira visita, calendário e aulas abrem sem internet.
    Caminhos relativos de propósito: o GitHub Pages serve de /nome-do-repo/. */
 
-const CACHE = 'transpetro-2026';
+/* Suba este numero sempre que mudar a estrategia de cache aqui: o activate
+   apaga todo cache com nome diferente, e e assim que quem ja tem uma copia
+   velha guardada recebe a nova. */
+const CACHE = 'transpetro-2026-2';
 const SHELL = [
   './',
   './index.html',
@@ -53,8 +56,13 @@ self.addEventListener('fetch', e => {
      index.html de uma versao junto com um app.js de outra, e a pagina quebra
      num erro de elemento inexistente. O cache continua sendo a reserva
      quando nao ha internet — o offline nao perde nada. */
+  /* O .md DA AULA entra aqui junto com o codigo. Ele e o arquivo que mais
+     muda no projeto inteiro — voce reescreve uma aula e salva por cima, com
+     o mesmo nome. Se ficar na estrategia "cache primeiro" la de baixo, a
+     pagina abre a versao anterior da aula e a nova so aparece na visita
+     seguinte, sem nenhum aviso. Foi exatamente o que aconteceu com a R01. */
   const ehCodigo = req.mode === 'navigate' ||
-                   /\.(html|js|css)$/.test(caminho);
+                   /\.(html|js|css|md)$/.test(caminho);
 
   e.respondWith((async () => {
     const cache = await caches.open(CACHE);
