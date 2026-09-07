@@ -283,7 +283,7 @@
             },
             {
               "id": "L04",
-              "t": "Bateria de questões de Redes II (60 min)"
+              "t": "Bateria de Redes II (40 min) + 20 min de bloco misto com Redes I, sem filtro de assunto"
             }
           ]
         },
@@ -294,7 +294,7 @@
           "topicos": [
             {
               "id": "E03",
-              "t": "Erros da semana 2 + revisão dos erros da semana 1"
+              "t": "Erros da semana 2 + os da semana 1: refazer fechado, sem gabarito"
             },
             {
               "id": "E04",
@@ -395,7 +395,7 @@
             },
             {
               "id": "L06",
-              "t": "Bateria de questões de Segurança I (60 min)"
+              "t": "Bateria de Segurança I (40 min) + 20 min de bloco misto, sem filtro de assunto"
             }
           ]
         },
@@ -406,7 +406,7 @@
           "topicos": [
             {
               "id": "E05",
-              "t": "Erros da semana 3 + revisão espaçada das semanas 1–2"
+              "t": "Erros da semana 3 + espaçada das semanas 1–2: refazer fechado; abrir a aula só na segunda falha"
             }
           ]
         }
@@ -503,7 +503,7 @@
             },
             {
               "id": "L08",
-              "t": "Bateria de questões de Segurança II (60 min)"
+              "t": "Bateria de Segurança II (40 min) + 20 min de bloco misto, sem filtro de assunto"
             }
           ]
         },
@@ -514,7 +514,7 @@
           "topicos": [
             {
               "id": "E06",
-              "t": "Erros da semana 4 + revisão espaçada das semanas 1–3"
+              "t": "Erros da semana 4 + espaçada das semanas 1–3: refazer fechado; abrir a aula só na segunda falha"
             }
           ]
         }
@@ -603,7 +603,7 @@
             },
             {
               "id": "L10",
-              "t": "Bateria de Segurança III e ITIL (60 min)"
+              "t": "Bateria de Segurança III e ITIL (40 min) + 20 min de bloco misto"
             }
           ]
         },
@@ -614,7 +614,7 @@
           "topicos": [
             {
               "id": "E07",
-              "t": "Erros da semana 5 + fechamento do bloco Segurança"
+              "t": "Erros da semana 5 + fechamento de Segurança: refazer fechado antes de reler qualquer aula"
             }
           ]
         }
@@ -707,7 +707,7 @@
             },
             {
               "id": "L12",
-              "t": "Bateria de questões de SQL — leia o código com calma (60 min)"
+              "t": "Bateria de SQL, lendo o código com calma (40 min) + 20 min de bloco misto"
             }
           ]
         },
@@ -718,7 +718,7 @@
           "topicos": [
             {
               "id": "E08",
-              "t": "Erros da semana 6 + revisão espaçada de Redes e Segurança"
+              "t": "Erros da semana 6 + espaçada de Redes e Segurança: refazer fechado; abrir a aula só na segunda falha"
             }
           ]
         }
@@ -811,7 +811,7 @@
             },
             {
               "id": "L14",
-              "t": "Bateria de BD II e estruturas de dados (60 min)"
+              "t": "Bateria de BD II e estruturas de dados (40 min) + 20 min de bloco misto"
             }
           ]
         },
@@ -822,7 +822,7 @@
           "topicos": [
             {
               "id": "E09",
-              "t": "Erros da semana 7 + revisão espaçada"
+              "t": "Erros da semana 7 + espaçada: refazer fechado; abrir a aula só na segunda falha"
             }
           ]
         }
@@ -915,7 +915,7 @@
             },
             {
               "id": "L16",
-              "t": "Bateria de questões com código Java (60 min)"
+              "t": "Bateria de questões com código Java (40 min) + 20 min de bloco misto"
             }
           ]
         },
@@ -926,7 +926,7 @@
           "topicos": [
             {
               "id": "E10",
-              "t": "Erros da semana 8 + revisão espaçada"
+              "t": "Erros da semana 8 + espaçada: refazer fechado; abrir a aula só na segunda falha"
             }
           ]
         }
@@ -1019,7 +1019,7 @@
             },
             {
               "id": "L18",
-              "t": "Bateria de Arquitetura e Alto Desempenho (60 min)"
+              "t": "Bateria de Arquitetura e Alto Desempenho (40 min) + 20 min de bloco misto"
             }
           ]
         },
@@ -1030,7 +1030,7 @@
           "topicos": [
             {
               "id": "E11",
-              "t": "Erros da semana 9 + revisão espaçada"
+              "t": "Erros da semana 9 + espaçada: refazer fechado; abrir a aula só na segunda falha"
             }
           ]
         }
@@ -1127,7 +1127,7 @@
             },
             {
               "id": "L20",
-              "t": "Bateria de Linux, Windows e Nuvem (60 min)"
+              "t": "Bateria de Linux, Windows e Nuvem (40 min) + 20 min de bloco misto"
             }
           ]
         },
@@ -1138,7 +1138,7 @@
           "topicos": [
             {
               "id": "E12",
-              "t": "Erros da semana 10 + revisão espaçada geral"
+              "t": "Erros da semana 10 + espaçada geral: refazer fechado; abrir a aula só na segunda falha"
             }
           ]
         }

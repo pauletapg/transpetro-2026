@@ -180,25 +180,43 @@ CALIBRAGEM DE LEITURA (medida sobre este projeto):
 
 ORÇAMENTO POR FATIA:
 
-   | Fatia  | Teoria     | Palavras de teoria | Questões NA SESSÃO |
-   |--------|------------|--------------------|--------------------|
-   | 45 min | 25 min     | 2.200 – 2.800      | 5                  |
-   | 60 min | 35 min     | 3.000 – 3.800      | 6                  |
-   | 90 min | 50 min     | 4.500 – 5.500      | 9                  |
-   | 120 min| 70 min     | 6.500 – 7.500      | 12                 |
+   | Fatia  | Aquecimento | Teoria | Palavras de teoria | Conferência |
+   |--------|-------------|--------|--------------------|-------------|
+   | 45 min | 10 min      | 25 min | 2.200 – 2.800      | 2 a 3 questões |
+   | 60 min | 12 min      | 35 min | 3.000 – 3.800      | 3 questões |
+   | 90 min | 15 min      | 50 min | 4.500 – 5.500      | 3 a 4 questões |
+   | 120 min| 20 min      | 70 min | 6.500 – 7.500      | 4 questões |
 
    Reserve 5 min do fim de qualquer fatia para o checklist da aula.
 
-QUANTAS QUESTÕES A AULA TRAZ — não é o mesmo número:
+QUANTAS QUESTÕES A AULA TRAZ — e por que quase todas ficam para depois:
 
    A aula traz TODAS as questões de TRANSPETRO 2018 e 2023 do assunto, mais
    as de CESGRANRIO do caderno, mais inéditas para tapar buraco: alvo de
-   **10 a 14 questões**. Você não resolve todas na sessão.
+   **10 a 14 questões**. Só duas ou três são resolvidas no dia em que a aula
+   é lida. As outras são o material de recuperação das sessões seguintes.
 
-   - na sessão da semana: as de TRANSPETRO, na ordem em que aparecem;
-   - no bloco de sábado (60 min): as demais da aula + bateria do
-     TecConcursos no filtro indicado — ~20 questões em 60 min;
-   - no domingo: só as que você errou.
+   A REGRA DAS 24 HORAS. Responder sobre um texto que você acabou de ler mede
+   memória de trabalho, não memória durável: você acerta quase tudo, sente que
+   aprendeu e perde na semana seguinte. Por isso a aula se distribui em quatro
+   momentos, e não em um:
+
+   1. AQUECIMENTO, no começo da sessão — as questões que ficaram pendentes da
+      aula anterior, de cabeça, antes de ler qualquer coisa nova. É o momento
+      mais valioso do dia e o mais fácil de pular.
+   2. TEORIA da aula de hoje.
+   3. CONFERÊNCIA — duas ou três questões da aula, escolhidas entre as de
+      TRANSPETRO, só para checar se a leitura pegou. Não é treino, é aferição.
+   4. O RESTO vira aquecimento de amanhã, e depois vai para o bloco de sábado
+      junto com a bateria do TecConcursos (~20 questões em 60 min), com os
+      últimos 20 min sem filtro de assunto.
+
+   No domingo, só as que você errou — refeitas fechadas, sem gabarito, abrindo
+   a aula apenas nas que errar de novo.
+
+   Consequência para quem escreve a aula: a ORDEM das questões importa. As
+   primeiras têm que ser as que fecham o conceito central, porque são as
+   únicas que serão resolvidas no dia da leitura.
 
 CONFERÊNCIA DE TAMANHO, antes de fechar a aula:
 

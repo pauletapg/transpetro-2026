@@ -29,18 +29,27 @@ tempo: 45 min
 > A fatia de R01 no calendário é de 45 min, mas a teoria abaixo tem **5.400 palavras, 55 a
 > 60 min de leitura de estudo** (medido com `python ferramentas/tamanho.py`). Não encolhi: é o assunto de redes mais cobrado do histórico,
 > e a seção 4 (encapsulamento) já entrega boa parte de **R02**, que divide a segunda-feira
-> com esta aula. Ou seja, o tempo não some — muda de lugar. Use a segunda inteira assim:
+> com esta aula. Ou seja, o tempo não some — muda de lugar.
+>
+> Esta é a primeira aula do plano, então hoje não há aquecimento: a segunda-feira começa
+> direto na teoria. Use os 90 min assim:
 >
 > | | |
 > |---|---|
 > | Teoria desta aula, seções 1 a 7 | 55 min |
-> | **Q01 a Q04** — as quatro da TRANSPETRO | 16 min |
-> | R02, que vira consolidação do que a seção 4 já explicou | ~15 min |
+> | **Q01 e Q02**, só para conferir se a leitura pegou | 8 min |
 > | Checklist do fim | 5 min |
+> | Sobra para começar **R02** | ~20 min |
 >
-> **Q05 a Q12 ficam para o bloco de questões de sábado.** Elas existem para você
-> reencontrar os mesmos sete conceitos com outras palavras — que é exatamente o que a prova
-> vai fazer.
+> R02 não cabe nesses 20 minutos e não deve caber: ela é pré-requisito dos tópicos de
+> terça a sexta e tem plano próprio de distribuição pela semana, na nota de abertura dela.
+> Na segunda, leia dela só o vocabulário (PDU, SDU, PCI) — a seção 4 desta aula aqui já
+> adiantou o resto.
+>
+> **Q03 a Q12 não são para hoje.** Q03 e Q04 abrem a sessão de terça-feira, de cabeça, antes
+> de qualquer leitura nova; as outras são material do bloco de sábado. Responder sobre um
+> texto que você acabou de ler mede memória de trabalho, não aprendizado — é o intervalo de
+> um dia que fixa.
 
 ---
 

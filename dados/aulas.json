@@ -1,12 +1,15 @@
 {
-  "v": 1788752069,
+  "v": 1788755594,
   "aulas": [
-    "r01"
+    "r01",
+    "r02"
   ],
   "arquivos": {
+    "r02": "aulas/redes/Encapsulamento - PDU, cabecalho e payload.md",
     "r01": "aulas/redes/Modelo OSI - as sete camadas.md"
   },
   "titulos": {
+    "r02": "Encapsulamento: PDU, cabeçalho e payload",
     "r01": "Modelo OSI: as sete camadas e o que cada uma resolve"
   }
 }

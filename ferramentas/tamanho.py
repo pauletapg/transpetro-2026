@@ -83,23 +83,44 @@ def analisa(caminho):
     print('  id %s  ·  fatia declarada: %s' % (meta.get('id', '?'), meta.get('tempo', '?')))
     print('  ' + '-' * 62)
     print('  teoria ....... %5d palavras  ->  %4.0f min de leitura' % (pal, min_teoria))
-    print('  questoes ..... %5d na aula   ->  %4.0f min se resolver todas' % (n_questoes, min_questoes))
+    print('  questoes ..... %5d na aula   ->  %4.0f min para resolver todas' % (n_questoes, min_questoes))
     print('  checklist ....                    ->     5 min')
     print('  ' + '-' * 62)
-    print('  aula inteira, de uma vez ......... %4.0f min' % (min_teoria + min_questoes + 5))
+    print('  a aula inteira, se lida de uma vez  %4.0f min' % (min_teoria + min_questoes + 5))
+    print('  (mas ela nao e feita de uma vez — veja a distribuicao abaixo)')
 
     if not fatia:
         print('  (sem campo "tempo" no frontmatter — nao da para comparar)')
         return
 
-    cabem = int(max(0, (fatia - min_teoria - 5)) / MIN_POR_QUESTAO)
+    # A REGRA DAS 24 HORAS (_MODELO.md): a sessao NAO resolve as questoes da
+    # aula que acabou de ser lida. Ela abre com as pendentes da aula anterior
+    # (aquecimento), le a teoria, confere com 2 ou 3, e empurra o resto.
+    n_conf = 2 if fatia <= 45 else (3 if fatia <= 90 else 4)
+    min_conf = n_conf * MIN_POR_QUESTAO
+    aquecimento = 10 if fatia <= 45 else (15 if fatia <= 90 else 20)
+    usado = aquecimento + min_teoria + min_conf + 5
+
     print('')
-    print('  Na sessao de %d min: teoria (%.0f min) + %d questao(oes) + checklist.'
-          % (fatia, min_teoria, cabem))
-    if n_questoes > cabem:
-        print('  As outras %d ficam para o bloco de sabado. Avise isso na aula,'
-              % (n_questoes - cabem))
-        print('  num callout [!nota] no topo.')
+    print('  A sessao de %d min, pela regra das 24 horas:' % fatia)
+    print('    aquecimento com as questoes da aula anterior ... %4d min' % aquecimento)
+    print('    teoria desta aula ............................. %4.0f min' % min_teoria)
+    print('    conferencia: %d questao(oes) daqui ............. %4.0f min' % (n_conf, min_conf))
+    print('    checklist ..................................... %4d min' % 5)
+    print('    %s' % ('-' * 52))
+    print('    total ......................................... %4.0f min  (fatia: %d)'
+          % (usado, fatia))
+
+    sobram = max(0, n_questoes - n_conf)
+    if sobram:
+        print('')
+        print('  As outras %d questoes desta aula sao o aquecimento das proximas' % sobram)
+        print('  sessoes e o material do bloco de sabado. Nao sao para hoje.')
+
+    if usado > fatia:
+        print('')
+        print('  ATENCAO: estoura a fatia em %.0f min. Nao encolha a teoria —' % (usado - fatia))
+        print('  avise no topo da aula, num callout [!nota], como distribuir o dia.')
 
     alvo_min, alvo_max = fatia * 50, fatia * 62   # ~2.500 palavras para 45 min
     if pal < alvo_min:

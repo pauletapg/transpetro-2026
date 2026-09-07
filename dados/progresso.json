@@ -1,4 +1,17 @@
 {
-  "atualizadoEm": "2026-09-07T01:38:56.000Z",
-  "sessoes": {}
+  "atualizadoEm": "2026-09-07T03:58:18.460Z",
+  "sessoes": {
+    "0:0": {
+      "feito": false,
+      "qHits": 0,
+      "notas": "",
+      "erros": []
+    },
+    "0:1": {
+      "feito": false,
+      "qHits": 0,
+      "notas": "",
+      "erros": []
+    }
+  }
 }
