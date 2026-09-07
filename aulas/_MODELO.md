@@ -178,33 +178,40 @@ Enunciado.
 ## Onde treinar no TecConcursos
 
 <!--
-Sugira o filtro EXATO. Nunca invente nome de assunto: a árvore real das 14
-matérias está em dados/assuntos-tec.json (1041 assuntos, importada dos HTMLs
-do TecConcursos salvos em ferramentas/tec/). Consulte com:
+O QUE IMPORTA AQUI E O NOME DO ASSUNTO, nao o link. O estudo e feito
+navegando no site pelo filtro de materia > assunto.
 
+NUNCA digite o slug de um link a mao — foi assim que um link quebrado
+entrou na aula R01. Se for pôr link, copie do campo "url" de
+dados/assuntos-tec.json, nunca invente a partir do nome.
+
+Consulte a arvore real com:
   python ferramentas/assuntos.py <palavra-chave>
   python ferramentas/assuntos.py firewall --materia seguranca
   python ferramentas/assuntos.py --materias
 
-A ferramenta devolve, para cada assunto: o caminho completo na árvore, o
-código de hierarquia, quantas questões existem no acervo, o link direto e
-QUAIS questões de 2018 e 2023 caem ali. Cole isso nesta seção.
-
-Formato: filtro principal primeiro, com número de questões e link; depois
-2 ou 3 complementos para o resto da semana.
+Formato: tabela do filtro principal, depois tabela dos complementos.
 -->
 
-Matéria **TI - Xxxxx**. O filtro principal desta aula:
+Matéria: **TI - Xxxxx**
 
-- **Caminho › Completo › Na Árvore** — hierarquia `00.00`, **N questões** no acervo.
-  [Abrir o assunto](https://www.tecconcursos.com.br/questoes/materias/...)
+**Filtro principal desta aula**
+
+| | |
+|---|---|
+| Assunto | `Pai na Árvore` › **`Nome Exato do Assunto`** |
+| Hierarquia | `00.00` |
+| Questões no acervo | N |
+| No seu caderno CESGRANRIO | N |
 
 Marque também a banca **CESGRANRIO**. Se sobrarem menos de 20 questões, tire o
-filtro de banca e resolva as demais como treino de raciocínio.
+filtro de banca e resolva as demais como treino de leitura.
 
-Complementos, para o resto da semana:
+**Complementos, para o resto da semana**
 
-- **Outro › Assunto** — `00.00`, N questões. Por que ele complementa esta aula.
+| Assunto | Hierarquia | Questões | Por quê |
+|---|---|---:|---|
+| `Pai` › **`Assunto vizinho`** | `00.00` | N | Uma linha dizendo por que complementa |
 
 > [!checklist]
 > - Cinco linhas, no máximo.

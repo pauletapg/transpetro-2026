@@ -117,6 +117,20 @@ Também funcionam tabelas, ` ``` ` para código, `**negrito**`, `*destaque*`,
 
 O visual de todas as aulas vem de `assets/aula.css`.
 
+### Quando a aula não resolve a questão
+
+Resolvendo questões no TecConcursos você vai achar conteúdo que a aula não
+cobria. Registre na hora — erro com o tipo **"falta conteúdo na aula"**, ou uma
+linha nas observações começando com `FALTA:`. Depois:
+
+```bash
+python ferramentas/lacunas.py
+```
+
+Junta tudo por sessão e diz qual arquivo editar. A saída é feita para colar numa
+conversa pedindo a atualização — o texto pronto está em [PROMPT-AULA.md](PROMPT-AULA.md),
+que também traz o prompt para criar aulas novas.
+
 ---
 
 ## Banca, TRANSPETRO e ajuda

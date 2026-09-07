@@ -283,28 +283,33 @@ utilizada. No modelo OSI, essas duas funções pertencem à camada de
 
 ## Onde treinar no TecConcursos
 
-Matéria **TI - Redes de Computadores**. O filtro principal desta aula:
+Matéria: **TI - Redes de Computadores**
 
-- **Modelos de Referência de Redes › Modelo OSI** — hierarquia `03.01`,
-  **2.106 questões** no acervo, 7 delas no seu caderno CESGRANRIO.
-  [Abrir o assunto](https://www.tecconcursos.com.br/materias/ti-redes-de-computadores/modelo-osi)
+**Filtro principal desta aula**
 
-Marque também a banca **CESGRANRIO**. Se sobrarem menos de 20 questões, tire o filtro
-de banca: o conceito não muda entre bancas e o treino de raciocínio vale.
+| | |
+|---|---|
+| Assunto | `Modelos de Referência de Redes` › **`Modelo OSI`** |
+| Hierarquia | `03.01` |
+| Questões no acervo | 2.106 (667 comentadas) |
+| No seu caderno CESGRANRIO | 7 |
 
-Complementos naturais, para o resto da semana:
+Marque também a banca **CESGRANRIO**. Se sobrarem menos de 20 questões, tire o
+filtro de banca: o conceito não muda entre bancas e o treino de leitura vale.
 
-- **Componentes Físicos de Redes › Equipamentos de Redes (Roteadores, Switches, Hubs…)** —
-  `08.01`, 2.158 questões. É a outra metade da Q41 de 2018.
-  [Abrir](https://www.tecconcursos.com.br/materias/ti-redes-de-computadores/equipamentos-de-redes-roteadores-switches-hubs-etc)
-- **Topologias de Redes** — `02`, 1.084 questões. Assunto da Q40 de 2018, vizinha de prova.
-  [Abrir](https://www.tecconcursos.com.br/materias/ti-redes-de-computadores/topologias-de-redes)
-- **Modelos de Referência de Redes › Arquitetura TCP/IP** — `03.02`, 1.560 questões.
-  É o par do OSI e cai junto; será o filtro da aula R03.
+**Complementos, para o resto da semana**
+
+| Assunto | Hierarquia | Questões | Por quê |
+|---|---|---:|---|
+| `Componentes Físicos de Redes` › **`Equipamentos de Redes (Roteador, Switch, Hub, etc.)`** | `08.01` | 2.158 | É a outra metade da Q41 de 2018 |
+| **`Topologias de Redes`** | `02` | 1.084 | Assunto da Q40 de 2018, vizinha de prova |
+| `Modelos de Referência de Redes` › **`Arquitetura TCP/IP`** | `03.02` | 1.560 | Par do OSI, cai junto; será o filtro da aula R03 |
 
 > [!nota]
-> Estes nomes vieram da árvore real do TecConcursos, importada dos HTMLs que você salvou
-> em `ferramentas/tec/`. Para achar o filtro de qualquer outra aula:
+> Os nomes acima são os do TecConcursos, tirados da árvore real em
+> `dados/assuntos-tec.json`. Navegue por eles no site: **Questões → Filtrar por
+> matéria → TI - Redes de Computadores** e depois abra a hierarquia indicada.
+> Para achar o assunto de qualquer outra aula:
 > `python ferramentas/assuntos.py <palavra-chave>`
 
 > [!checklist]

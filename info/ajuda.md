@@ -66,6 +66,31 @@ O gabarito **não fica à vista**: responda primeiro, clique em *Comentário* de
 No PDF, os comentários saem de perto das questões e viram um **caderno de
 gabaritos** no fim do documento.
 
+## Quando a aula não dá conta da questão
+
+Vai acontecer: você resolve questões no TecConcursos e cai numa que a aula não
+explicava. **Isso é sinal de aula incompleta, não de erro seu** — e a aula deve
+ser corrigida, porque ela é o material que vai sobrar para a véspera.
+
+Registre na hora, dentro da sessão do dia, de um dos dois jeitos:
+
+- como **erro**, escolhendo o tipo de distrator **"falta conteúdo na aula"**;
+- ou nas **observações**, numa linha começando com `FALTA:`.
+
+Depois, quando quiser atualizar as aulas, rode:
+
+```
+python ferramentas/lacunas.py
+```
+
+Ele junta tudo que você marcou, agrupado por sessão, já dizendo qual arquivo de
+aula editar. Cole a saída numa conversa nova junto com as questões que te
+derrubaram — o bloco pronto para isso está em `PROMPT-AULA.md`.
+
+> [!nota]
+> Registre no momento em que acontece. Depois de duas horas de questões você
+> não lembra qual conceito faltava.
+
 ## Ler offline no celular
 
 Abra o site e toque em **⤓ Offline**. Ele baixa calendário e aulas; a partir daí
