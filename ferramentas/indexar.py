@@ -13,6 +13,18 @@ O que liga o arquivo ao calendario nao e o nome nem a pasta: e o campo
     titulo: Modelo OSI: as sete camadas e o que cada uma resolve
     ---
 
+VERSAO RESUMIDA. Uma aula longa pode ter um segundo arquivo, a versao
+resumida, que NAO leva 'id' (id repetido quebra o indice) e sim 'resumo_de'
+apontando para o id da aula completa:
+
+    ---
+    resumo_de: R01
+    titulo: Modelo OSI: as sete camadas (versao resumida)
+    ---
+
+Ela entra no aulas.json num mapa a parte, 'resumos', e a pagina da aula
+mostra o botao "completa | resumida" quando as duas existem.
+
 Roda sozinho no iniciar.bat e no publicar.bat.
 """
 import io, json, os, time
@@ -41,7 +53,7 @@ def frontmatter(caminho):
 
 
 def main():
-    arquivos, titulos, sem_id = {}, {}, []
+    arquivos, titulos, resumos, sem_id = {}, {}, {}, []
 
     for pasta, _, nomes in os.walk(AULAS):
         for nome in sorted(nomes):
@@ -51,6 +63,15 @@ def main():
             rel = os.path.relpath(caminho, RAIZ).replace('\\', '/')
             meta = frontmatter(caminho)
             ident = (meta.get('id') or '').strip().lower()
+            pai = (meta.get('resumo_de') or '').strip().lower()
+
+            # versao resumida: nao ocupa id proprio, entra no mapa 'resumos'
+            if pai and not ident:
+                if pai in resumos:
+                    print('  AVISO: dois resumos para "%s": %s e %s' % (pai, resumos[pai], rel))
+                    continue
+                resumos[pai] = rel
+                continue
 
             if not ident:
                 sem_id.append(rel)
@@ -63,17 +84,25 @@ def main():
             if meta.get('titulo'):
                 titulos[ident] = meta['titulo']
 
+    for pai in sorted(resumos):
+        if pai not in arquivos:
+            print('  AVISO: resumo de "%s" sem aula completa correspondente -> %s'
+                  % (pai, resumos[pai]))
+
     dados = {
         'v': int(time.time()),
         'aulas': sorted(arquivos),
         'arquivos': arquivos,
         'titulos': titulos,
+        'resumos': resumos,
     }
     os.makedirs(os.path.dirname(SAIDA), exist_ok=True)
     with io.open(SAIDA, 'w', encoding='utf-8', newline='\n') as f:
         f.write(json.dumps(dados, ensure_ascii=False, indent=2))
 
     print('  %d aula(s) indexada(s): %s' % (len(dados['aulas']), ', '.join(dados['aulas']) or '(nenhuma)'))
+    if resumos:
+        print('  %d com versao resumida: %s' % (len(resumos), ', '.join(sorted(resumos))))
     for rel in sem_id:
         print('  AVISO: sem "id" no frontmatter, ficou de fora -> %s' % rel)
 

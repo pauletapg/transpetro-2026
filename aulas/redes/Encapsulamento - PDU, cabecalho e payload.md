@@ -23,7 +23,9 @@ tempo: 45 min
 > **BNDES 2024** (a camada que "segmenta e entrega à camada de rede, que transforma esses
 > segmentos em pacotes" — é o enunciado mais limpo do assunto em todo o acervo) e a
 > **CNU 2024**, cujo distrator A é literalmente um erro de encapsulamento plantado.
-> Mais **2 da TRANSPETRO** relidas por esta ótica e **4 inéditas**: 14 no total.
+> Mais **2 da TRANSPETRO** relidas por esta ótica: **10 questões reais de banca, e
+> nenhuma inédita** — com dez de prova na mesa, questão escrita por mim só diluiria o
+> treino no molde verdadeiro da CESGRANRIO.
 >
 > **O molde:** enunciado definicional longo, alternativa de duas ou três palavras — os 56%
 > da ênfase 4. Os distratores são **T4** (troca o nome da unidade entre camadas vizinhas) e
@@ -53,9 +55,9 @@ tempo: 45 min
 > | **Segunda**, nos 19 min que sobram de R01 | seções **1 e 3** (o vocabulário: PDU, SDU, PCI) — pule a 2, que repete o cenário de R01 | — | 14 min |
 > | **Terça**, antes de R03/R04 | seções **2, 4, 5 e 6** (as cinco PDUs, a descida, a subida) | **Q03** | 4 + 29 min |
 > | **Quarta**, antes de R06 | seções **7 e 8** (desencapsulamento e o salto) | Q05, Q06, Q07 | 12 + 10 min |
-> | **Quinta**, antes de R07 | seção **9** (MTU, MSS, fragmentação) | Q01, Q12 | 8 + 9 min |
-> | **Sexta**, antes de R09/R10 | nada novo desta aula | Q10, Q13 | 8 min |
-> | **Sábado**, no bloco L02 de 60 min | seções **10 e 11**, as duas tabelas e as pegadinhas | Q02, Q04, Q08, Q09, Q11, Q14 | 22 + 24 min |
+> | **Quinta**, antes de R07 | seção **9** (MTU, MSS, fragmentação) | Q01 | 4 + 9 min |
+> | **Sexta**, antes de R09/R10 | nada novo desta aula | Q10 | 4 min |
+> | **Sábado**, no bloco L02 de 60 min | seções **10 e 11**, as duas tabelas e as pegadinhas | Q02, Q04, Q08, Q09 | 22 + 16 min |
 >
 > O deslocamento de um dia arruma de quebra a sobrecarga da terça, que era a linha mais
 > apertada: em vez de 41 min, ela pede 33. A única que ainda estoura é o sábado, com 46 dos
@@ -231,7 +233,7 @@ camada acrescenta um cabeçalho e um rodapé" está errada — ela vale para a 2
 ## 4 · As cinco PDUs, uma por uma
 
 Este é o miolo do assunto e é onde a banca mais derruba, então é a seção mais longa da
-aula de propósito. **Cinco das catorze questões desta aula** — Q03, Q04, Q05, Q06 e Q14 —
+aula de propósito. **Quatro das dez questões desta aula** — Q03, Q04, Q05 e Q06 —
 são decididas por saber qual nome de unidade pertence a qual camada, e nada mais.
 
 ### Bit — camada 1, Física
@@ -779,7 +781,9 @@ E o par que mais confunde, isolado:
 > entram porque o encapsulamento é o que as resolve, mesmo sem ser o rótulo delas; a Q01
 > você já viu em R01, e aqui ela é relida por outra ótica. Da Q03 à Q10 são oito questões
 > **reais e recentes** do caderno CESGRANRIO, e é nelas que o assunto aparece com nome
-> próprio. As quatro últimas são inéditas, para os buracos que nenhuma das dez cobriu.
+> próprio. **São dez questões reais e nenhuma inédita:** passando de cinco questões da
+> banca no assunto, questão escrita por mim entra como ruído — o molde verdadeiro já
+> está representado o bastante.
 
 ### Q01 · TRANSPETRO 2018 · questão 41
 
@@ -1165,156 +1169,6 @@ Esse preparo e envio para a origem do datagrama é feito pela camada de rede do
 > Tipo de distrator: **T2 (irmão taxonômico)** nas quatro — todos são equipamentos reais e
 > do caminho certo, e o discriminante está na palavra "porta". Compare com a Q08: nas duas,
 > o gabarito sai de perguntar *até que cabeçalho aquele elemento consegue enxergar*.
-
-### Q11 · Inédita
-
-> [!fonte] Fonte: questão inédita, não caiu em prova
-> Cobre a **conta de sobrecarga** (seção 5), que nenhuma das dez questões acima pede e que
-> é o formato de derivação responsável por ~26% das questões específicas de 2023. Escrita
-> no molde de `2023·Q51` e `2023·Q53`: cinco números vizinhos, e errar leva sempre a uma
-> alternativa existente (**T8**).
-
-Uma estação com endereço IPv4 `10.20.30.40` envia uma requisição HTTP de 120 bytes a um
-servidor web, por meio de uma conexão TCP sobre um enlace Ethernet II. Não há opções nos
-cabeçalhos IP e TCP, nem etiqueta de VLAN.
-
-O tamanho do quadro Ethernet resultante, incluindo o campo de verificação de erro e
-excluindo o preâmbulo e o delimitador de início de quadro, em bytes, é
-
-- [ ] 154
-- [ ] 160
-- [ ] 174
-- [x] 178
-- [ ] 186
-
-> [!gabarito]-
-> **Gabarito: D.** Some os cabeçalhos de fora para dentro:
-> `120 (HTTP) + 20 (TCP) + 20 (IP) + 14 (cabeçalho Ethernet) + 4 (FCS) = 178`.
->
-> Cada errada corresponde a esquecer exatamente uma parcela, e todas são números que você
-> encontra de verdade num analisador — por isso a questão é perigosa:
-> **A, 154** esqueceu o cabeçalho IP. **B, 160** parou no pacote IP e não montou o quadro.
-> **C, 174** é o valor que o `tcpdump` mostra, porque a placa de rede já removeu o FCS — o
-> enunciado pede explicitamente *"incluindo o campo de verificação de erro"*. **E, 186**
-> incluiu o preâmbulo e o SFD, que o enunciado mandou excluir e que, além disso, não fazem
-> parte do quadro.
->
-> Tipo de distrator: **T8 (vizinho numérico)**. Nesta família de questão a leitura do
-> enunciado vale mais que a conta: "incluindo o FCS" e "excluindo o preâmbulo" são as duas
-> cláusulas que separam 178 de 174 e de 186.
-
-### Q12 · Inédita
-
-> [!fonte] Fonte: questão inédita, não caiu em prova
-> Cobre o que muda e o que não muda **a cada salto** (seção 8) — o mecanismo que R01 anuncia
-> e que nenhuma questão real do acervo cobra de frente, apesar de ser o que decide metade
-> das questões de roteamento. Molde de lista com "nessa ordem", que é o da Q01 de 2018.
-
-Um pacote IPv4 sai de uma estação em uma rede local, atravessa três roteadores e chega a um
-servidor em outra rede. Considere os quatro elementos a seguir, tais como observados por um
-analisador de tráfego instalado no primeiro enlace e depois no último:
-
-(i) o endereço MAC de destino; (ii) o endereço IP de destino; (iii) a porta TCP de destino;
-(iv) o valor do campo TTL.
-
-Comparando as duas capturas, os elementos que apresentam valores **diferentes** são, apenas,
-
-- [ ] (i) e (ii)
-- [ ] (ii) e (iv)
-- [x] (i) e (iv)
-- [ ] (i), (ii) e (iii)
-- [ ] (i), (iii) e (iv)
-
-> [!gabarito]-
-> **Gabarito: C.** O **MAC de destino** muda em todo salto, porque o quadro é destruído e
-> refeito a cada enlace, com os endereços daquele trecho. O **TTL** muda porque cada
-> roteador o decrementa: sai 64, chega 61 depois de três roteadores. Os outros dois
-> atravessam intactos: o **IP de destino** é de ponta a ponta por definição, e a **porta**
-> está dentro do cabeçalho TCP, que nenhum roteador abre.
->
-> **A** e **B** incluem o IP de destino — o erro conceitual mais caro do assunto, e o que a
-> pegadinha "o MAC de destino não é o da máquina final" ataca pelo outro lado. **D** e **E**
-> incluem a porta, supondo que o roteador mexe na camada 4; ele nem chega a olhar (seção 7).
-> **B** ainda deixa o MAC de fora, que é o item que muda com mais frequência de todos.
->
-> Tipo de distrator: **T4 (inversão de papel)** — todas as cinco usam os mesmos quatro
-> elementos, e o que separa é saber qual cabeçalho pertence a que alcance.
-> ==Muda o que é de salto (camada 2) e o que é contador (TTL); o de ponta a ponta não muda.==
-
-### Q13 · Inédita
-
-> [!fonte] Fonte: questão inédita, não caiu em prova
-> Cobre **fragmentação** (seção 9), que é conteúdo explícito do item 1.1f do edital, aparece
-> na aula inteira como par oposto de segmentação e não foi cobrada por nenhuma das dez
-> questões acima. Molde de derivação, com o cuidado de `2023·Q53`: o erro leva a uma
-> alternativa que existe.
-
-Um roteador recebe um datagrama IPv4 de 4.000 bytes, dos quais 20 bytes são de cabeçalho
-sem opções, e precisa encaminhá-lo por um enlace cuja MTU é de 1.500 bytes. O bit DF não
-está marcado.
-
-A quantidade de fragmentos gerados e o valor do campo de deslocamento do último fragmento
-são, respectivamente,
-
-- [ ] 3 e 2960
-- [x] 3 e 370
-- [ ] 3 e 296
-- [ ] 4 e 370
-- [ ] 2 e 185
-
-> [!gabarito]-
-> **Gabarito: B.** Cada fragmento leva 20 bytes de cabeçalho IP próprio, então sobram
-> `1500 − 20 = 1480` bytes de dados por fragmento, valor que já é múltiplo de 8 e por isso
-> serve. Os dados originais são `4000 − 20 = 3980` bytes, e
-> `3980 = 1480 + 1480 + 1020` → **3 fragmentos**. O deslocamento é contado **em unidades de
-> 8 bytes**: o terceiro fragmento começa depois de 2.960 bytes de dados, e `2960 ÷ 8 = 370`.
->
-> **A, 2960,** é a resposta de quem esqueceu de dividir por 8 — é o deslocamento em bytes,
-> não no campo. **C, 296,** dividiu por 10. **D, 4 fragmentos,** dividiu 4000 por 1480 em vez
-> de 3980, ou esqueceu que o cabeçalho é replicado. **E, 2,** dividiu 3980 por 1500 sem
-> descontar o cabeçalho de cada fragmento.
->
-> Tipos de distrator: **T8 (vizinho numérico)** no segundo valor, **T2** no primeiro. Os dois
-> detalhes que a banca cobra aqui são sempre os mesmos:
-> ==o cabeçalho IP é replicado em cada fragmento; o deslocamento vai em blocos de 8 bytes.==
-
-### Q14 · Inédita
-
-> [!fonte] Fonte: questão inédita, não caiu em prova
-> Escrita no molde **T3** do BANESE 2025 — enunciado definicional, cinco alternativas
-> verdadeiras, quatro delas sobre o conceito errado. Cobre o vocabulário PDU/SDU/cabeçalho
-> (seção 3), que é a base de tudo e que, nas dez questões reais, só aparece de raspão no
-> distrator A da Q06.
-
-Nos modelos de referência em camadas, uma camada recebe da camada imediatamente superior um
-bloco de dados que ela não interpreta nem modifica, acrescenta a esse bloco a sua própria
-informação de controle e entrega o resultado à camada inferior. Nesse contexto, denomina-se
-**unidade de dados de serviço** (SDU) o
-
-- [ ] conjunto de campos de controle que a camada acrescenta ao bloco recebido.
-- [x] bloco recebido da camada superior, transportado sem alteração pela camada atual.
-- [ ] bloco completo formado pela informação de controle mais os dados, entregue à camada inferior.
-- [ ] campo do cabeçalho que identifica qual protocolo da camada superior deve receber o bloco na recepção.
-- [ ] campo acrescentado ao final do bloco, que permite detectar erros ocorridos na transmissão.
-
-> [!gabarito]-
-> **Gabarito: B.** A **SDU** (*Service Data Unit*) é a carga: o que veio de cima e atravessa
-> a camada intocado. Em outras palavras, a PDU da camada N+1 é a SDU da camada N. Os
-> sinônimos que a banca usa são **payload** e **carga útil**.
->
-> As quatro erradas são **definições corretas de outros quatro conceitos desta aula** —
-> exatamente o molde T3, em que nada é falso e tudo está fora do lugar:
-> **A** define a **PCI**, a informação de controle, ou seja, o cabeçalho.
-> **C** define a **PDU**, o bloco inteiro — é a inversão mais tentadora, porque as duas
-> siglas diferem por uma letra e ambas terminam em "unidade de dados".
-> **D** define o **campo de demultiplexação**: EtherType, campo Protocolo ou porta de
-> destino, conforme a camada (seção 6).
-> **E** define o **FCS**, o fecho de 4 bytes da camada 2 (seção 4) — e é o único item da
-> lista que vai no **fim** do bloco, e não na frente.
->
-> Tipo de distrator: **T3 (definição verdadeira do conceito errado)**. O
-> `perfil-da-banca-CESGRANRIO-TI.md` §3 registra este tipo como o que exige "conhecer o
-> texto normativo, não o conceito" — e aqui o texto normativo é a ISO/IEC 7498.
 
 ## Figuras pendentes
 

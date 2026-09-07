@@ -40,7 +40,9 @@
 
     t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     t = t.replace(/(^|[^*\w])\*([^*\n]+)\*/g, '$1<em>$2</em>');
-    t = t.replace(/==([^=\n]+)==/g, '<mark>$1</mark>');
+    // o realce pode atravessar a quebra de linha: o paragrafo ja chega aqui
+    // inteiro, entao o ==...== nunca vaza para o paragrafo seguinte
+    t = t.replace(/==([^=]+)==/g, '<mark>$1</mark>');
     t = t.replace(/~~([^~\n]+)~~/g, '<del>$1</del>');
 
     return t.replace(RESTORE, (_, i) => guard[i]);
@@ -49,32 +51,67 @@
   const indent = l => l.match(/^\s*/)[0].replace(/\t/g, '  ').length;
   const isUL = l => /^\s*[-*+]\s+/.test(l);
   const isOL = l => /^\s*\d+[.)]\s+/.test(l);
+  /* Lista numerada so pode INTERROMPER um paragrafo se comecar do 1 — a regra
+     do CommonMark, e ela existe por um motivo concreto: um paragrafo que quebra
+     a linha em "3) e o MAC (IEEE 802.3...)" nao e uma lista, e sem esta regra
+     virava uma <ol> de um item so no meio do texto. */
+  const abreOL = l => /^\s*1[.)]\s+/.test(l);
   const corpo = l => l.replace(/^\s*(?:[-*+]|\d+[.)])\s+/, '');
 
-  /* ---------- listas, com um nível de aninhamento ---------- */
+  /* ---------- listas ----------
+     Um item de lista NAO acaba no fim da linha: linha indentada (ou colada
+     logo abaixo, sem indentar) que nao comeca com marcador e CONTINUACAO do
+     item. Sem isto, um item que passa de uma linha fechava a <ol> ali mesmo,
+     a continuacao virava paragrafo e o item seguinte abria uma <ol> nova
+     recomecando do "1." — era o bug da numeracao que reiniciava a cada item.
+
+     Cada item e montado juntando as linhas dele, tirando a indentacao comum,
+     e passando o resultado pelo blocos(): assim sub-lista, bloco de codigo,
+     tabela e callout dentro do item funcionam de graca. Item de um paragrafo
+     so sai sem o <p> em volta, para o <li> continuar enxuto. */
   function lista(linhas, i, out) {
     const base = indent(linhas[i]);
     const ordenada = isOL(linhas[i]);
-    let html = ordenada ? '<ol>' : '<ul>';
+    const itens = [];                                   // cada item: linhas cruas
+
+    const daLista = l => {
+      if (!l) return false;
+      if (!l.trim()) return false;
+      if (indent(l) > base) return true;                 // continuacao ou sub-lista
+      return (isUL(l) || isOL(l)) && indent(l) === base; // item novo
+    };
 
     while (i < linhas.length) {
       const l = linhas[i];
-      if (!l.trim()) { if (!linhas[i + 1] || !(isUL(linhas[i + 1]) || isOL(linhas[i + 1]))) break; i++; continue; }
-      if (!(isUL(l) || isOL(l)) || indent(l) < base) break;
 
-      if (indent(l) > base) {                      // sub-lista
-        const sub = [];
-        i = lista(linhas, i, sub);
-        html = html.replace(/<\/li>$/, sub.join('') + '</li>');
+      if (!l.trim()) {                                   // branco: so segue se o proximo ainda e da lista
+        if (!daLista(linhas[i + 1])) break;
+        if (itens.length) itens[itens.length - 1].push('');
+        i++;
         continue;
       }
-
-      let txt = corpo(l), cls = '';
-      const tarefa = txt.match(/^\[([ xX])\]\s*(.*)$/);
-      if (tarefa) { cls = tarefa[1].toLowerCase() === 'x' ? ' class="ok"' : ''; txt = tarefa[2]; }
-      html += `<li${cls}>${inline(txt)}</li>`;
+      if (indent(l) < base) break;
+      if ((isUL(l) || isOL(l)) && indent(l) === base) { itens.push([corpo(l)]); i++; continue; }
+      if (!itens.length) break;
+      itens[itens.length - 1].push(l);                   // continuacao do item aberto
       i++;
     }
+
+    let html = ordenada ? '<ol>' : '<ul>';
+    itens.forEach(item => {
+      let cls = '';
+      const tarefa = item[0].match(/^\[([ xX])\]\s*([\s\S]*)$/);
+      if (tarefa) { cls = tarefa[1].toLowerCase() === 'x' ? ' class="ok"' : ''; item[0] = tarefa[2]; }
+
+      const resto = item.slice(1);
+      const recuo = resto.filter(l => l.trim()).reduce((m, l) => Math.min(m, indent(l)), Infinity);
+      const corpoItem = [item[0]].concat(
+        resto.map(l => (l.trim() && recuo < Infinity) ? l.slice(recuo) : l));
+
+      const dentro = blocos(corpoItem);
+      const so = dentro.match(/^<p>([\s\S]*)<\/p>$/);
+      html += `<li${cls}>${so && !so[1].includes('<p>') ? so[1] : dentro}</li>`;
+    });
     out.push(html + (ordenada ? '</ol>' : '</ul>'));
     return i;
   }
@@ -145,7 +182,9 @@
       if (h) { fecha(); out.push(`<h${h[1].length}>${inline(h[2])}</h${h[1].length}>`); i++; continue; }
 
       if (/^\s*>/.test(l)) { fecha(); i = citacao(linhas, i, out); continue; }
-      if (isUL(l) || isOL(l)) { fecha(); i = lista(linhas, i, out); continue; }
+      if (isUL(l) || (isOL(l) && (!paragrafo.length || abreOL(l)))) {
+        fecha(); i = lista(linhas, i, out); continue;
+      }
 
       if (l.includes('|') && /^\s*\|?[\s:|-]+\|[\s:|-]*$/.test(linhas[i + 1] || '')) {
         fecha(); i = tabela(linhas, i, out); continue;

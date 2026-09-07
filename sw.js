@@ -4,7 +4,7 @@
 /* Suba este numero sempre que mudar a estrategia de cache aqui: o activate
    apaga todo cache com nome diferente, e e assim que quem ja tem uma copia
    velha guardada recebe a nova. */
-const CACHE = 'transpetro-2026-2';
+const CACHE = 'transpetro-2026-3';
 const SHELL = [
   './',
   './index.html',
@@ -19,13 +19,14 @@ const SHELL = [
   './dados/progresso.json'
 ];
 
-/* guarda o shell e todas as aulas listadas no índice */
+/* guarda o shell e todas as aulas do índice — completas e resumidas */
 async function encher() {
   const cache = await caches.open(CACHE);
   await cache.addAll(SHELL.map(u => new Request(u, { cache: 'reload' })));
   try {
     const idx = await (await fetch('./dados/aulas.json', { cache: 'reload' })).json();
-    const caminhos = Object.values(idx.arquivos || {});
+    const caminhos = Object.values(idx.arquivos || {})
+      .concat(Object.values(idx.resumos || {}));
     await Promise.all(caminhos.map(c =>
       cache.add(new Request('./' + c.split('/').map(encodeURIComponent).join('/'),
         { cache: 'reload' })).catch(() => {})));

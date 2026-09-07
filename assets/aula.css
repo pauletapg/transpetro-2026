@@ -29,6 +29,12 @@ a:hover{text-decoration:underline}
   transition:transform 460ms var(--ease),background 460ms var(--ease),color 460ms var(--ease)}
 .back:hover{background:rgba(127,240,184,.12);color:var(--jade);text-decoration:none}
 .aula-nav>.back:first-child:hover{transform:translateX(-3px)}
+/* alternador completa | resumida — só aparece quando as duas versões existem */
+.versoes{display:inline-flex;padding:2px;border-radius:999px;background:rgba(255,255,255,.06)}
+.versoes .ver{padding:6px 12px;border-radius:999px;color:var(--muted);
+  font:11px "Cascadia Code",monospace;transition:background 460ms var(--ease),color 460ms var(--ease)}
+.versoes .ver:hover{color:var(--jade);text-decoration:none}
+.versoes .ver.on{background:color-mix(in srgb,var(--accent) 20%,transparent);color:var(--accent)}
 
 /* cabeçalho */
 .aula-head{margin:26px 0 40px;padding:34px;border-radius:28px;border-top:2px solid var(--accent);
@@ -52,6 +58,11 @@ strong{color:#fff;font-weight:650}
 em{color:var(--jade);font-style:normal;font-weight:600}
 ul,ol{margin:14px 0;padding-left:22px}
 li{margin:7px 0}
+/* item de lista com mais de um paragrafo (continuacao ou sub-lista):
+   o <p> de dentro nao pode herdar a margem do <p> de bloco */
+li>p{margin:0 0 8px}
+li>p:last-child{margin-bottom:0}
+li>ul,li>ol{margin:6px 0 0}
 li::marker{color:var(--accent)}
 hr{margin:44px 0;border:0;height:1px;background:var(--hair)}
 

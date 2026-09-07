@@ -1,8 +1,17 @@
 /* Visualizador de aula: lê ?t=R01, busca aulas/r01.md e renderiza.
-   O cabeçalho sai do frontmatter, com o que faltar preenchido pelo plano. */
+   O cabeçalho sai do frontmatter, com o que faltar preenchido pelo plano.
+
+   DUAS VERSÕES. Aula cuja teoria passa de 40 min de leitura tem também uma
+   versão resumida, num arquivo à parte com "resumo_de: R01" no frontmatter.
+   O indexar.py põe as duas no aulas.json — a completa em "arquivos", a
+   resumida em "resumos" — e ?v=resumo abre a segunda. A escolha fica
+   guardada, para "próxima →" continuar na mesma versão. */
 
 const $ = q => document.querySelector(q);
-const id = (new URLSearchParams(location.search).get('t') || '').trim().toLowerCase();
+const params = new URLSearchParams(location.search);
+const id = (params.get('t') || '').trim().toLowerCase();
+const PREF = 'transpetro-2026-versao';
+const versaoPedida = (params.get('v') || localStorage.getItem(PREF) || '').trim().toLowerCase();
 
 const esc = v => String(v ?? '').replace(/[&<>"']/g, c =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -29,7 +38,11 @@ async function abrir() {
 
   // o caminho do arquivo vem do indice: a aula pode estar em qualquer pasta,
   // com qualquer nome. O que liga e o campo "id" do frontmatter.
-  const caminho = (indice.arquivos || {})[id];
+  const completa = (indice.arquivos || {})[id];
+  const resumida = (indice.resumos || {})[id];
+  // só respeita o pedido de resumo se ele existir de fato
+  const emResumo = versaoPedida === 'resumo' && !!resumida;
+  const caminho = emResumo ? resumida : completa;
   // no-store como nos dois JSON acima: a aula e reescrita por cima, com o
   // mesmo nome de arquivo, e sem isto o cache do navegador serve a versao
   // anterior. O sw.js ja guarda a copia para ler offline.
@@ -37,6 +50,8 @@ async function abrir() {
     ? await fetch(caminho.split('/').map(encodeURIComponent).join('/'), { cache: 'no-store' })
         .then(r => r.ok ? r.text() : null).catch(() => null)
     : null;
+
+  alternador(!!completa, !!resumida, emResumo);
 
   const { achado, todos } = plano ? localizar(plano) : { achado: null, todos: [] };
   const cor = achado?.disc.cor;
@@ -56,8 +71,9 @@ async function abrir() {
 
   document.title = (meta.titulo || achado?.t.t || id.toUpperCase()) + ' · TRANSPETRO 2026';
   $('#titulo').textContent = meta.titulo || achado?.t.t || id.toUpperCase();
-  $('#tag').textContent = meta.tag
-    || (achado ? `Semana ${achado.sem.n} · ${achado.disc.nome || ''}` : 'Aula avulsa');
+  $('#tag').textContent = (meta.tag
+    || (achado ? `Semana ${achado.sem.n} · ${achado.disc.nome || ''}` : 'Aula avulsa'))
+    + (emResumo ? ' · versão resumida' : '');
   $('#resumo').textContent = meta.resumo || '';
   $('#resumo').hidden = !meta.resumo;
 
@@ -130,6 +146,23 @@ function organizarQuestoes() {
   corpo.appendChild(caderno);
 }
 
+/* botão "completa | resumida", só quando as duas versões existem */
+function alternador(temCompleta, temResumo, emResumo) {
+  const cx = $('#versoes');
+  if (!cx) return;
+  if (!temCompleta || !temResumo) { cx.hidden = true; return; }
+  cx.hidden = false;
+  cx.innerHTML = [['', 'completa'], ['resumo', 'resumida']].map(([v, rot]) => {
+    const aqui = (v === 'resumo') === emResumo;
+    return `<a class="ver${aqui ? ' on' : ''}" href="aula.html?t=${encodeURIComponent(id)}${v ? '&v=' + v : ''}"
+              ${aqui ? 'aria-current="page"' : ''}>${rot}</a>`;
+  }).join('');
+  // guarda a escolha para as próximas aulas
+  cx.querySelectorAll('.ver').forEach(a => a.addEventListener('click', () => {
+    try { localStorage.setItem(PREF, a.textContent.trim() === 'resumida' ? 'resumo' : 'completa'); } catch (e) {}
+  }));
+}
+
 /* anterior/próxima entre as aulas que existem */
 function vizinhos(todos, indice) {
   const existe = indice.aulas || [];
@@ -138,7 +171,8 @@ function vizinhos(todos, indice) {
   if (i === -1) return;
   const liga = (el, alvo) => {
     if (!alvo) return;
-    el.href = `aula.html?t=${alvo.t.id.toLowerCase()}`;
+    el.href = `aula.html?t=${alvo.t.id.toLowerCase()}`
+      + (versaoPedida === 'resumo' ? '&v=resumo' : '');
     el.title = alvo.t.t;
     el.hidden = false;
   };

@@ -192,9 +192,25 @@ ORÇAMENTO POR FATIA:
 QUANTAS QUESTÕES A AULA TRAZ — e por que quase todas ficam para depois:
 
    A aula traz TODAS as questões de TRANSPETRO 2018 e 2023 do assunto, mais
-   as de CESGRANRIO do caderno, mais inéditas para tapar buraco: alvo de
-   **10 a 14 questões**. Só duas ou três são resolvidas no dia em que a aula
-   é lida. As outras são o material de recuperação das sessões seguintes.
+   as de CESGRANRIO do caderno: alvo de **10 a 14 questões**. Só duas ou três
+   são resolvidas no dia em que a aula é lida. As outras são o material de
+   recuperação das sessões seguintes.
+
+   QUANDO ESCREVER INÉDITA — e quando NÃO escrever:
+
+      Somando as duas provas da TRANSPETRO e o caderno CESGRANRIO, deu
+      **MAIS DE 5 questões reais** no assunto? Então NÃO escreva nenhuma
+      inédita. Nem uma.
+
+      O motivo é de treino, não de preguiça: questão inédita não tem o vício
+      de redação da banca — a extensão do enunciado, a ordem em que os
+      distratores aparecem, o jeito de esconder o discriminante numa palavra.
+      Com seis ou mais questões reais na mesa, cada inédita acrescentada
+      dilui o molde verdadeiro e treina o olho no molde errado.
+
+      Com 5 ou menos, escreva inéditas até chegar a 8, e diga na aula, no
+      callout de abertura da seção de questões, quantas são reais e quantas
+      não são. Toda inédita continua marcada "Inédita" no título.
 
    A REGRA DAS 24 HORAS. Responder sobre um texto que você acabou de ler mede
    memória de trabalho, não memória durável: você acerta quase tudo, sente que
@@ -230,6 +246,65 @@ NÃO CORTE TEORIA PARA CABER NO TEMPO. Corte enrolação. Se o assunto exigir
 mais do que a fatia comporta, escreva tudo e avise no topo da aula, num
 callout [!nota], o que fica para o bloco de sábado.
 
+=====================================================================
+AS DUAS VERSÕES: A COMPLETA E A RESUMIDA
+=====================================================================
+
+A medida que decide é a linha do tamanho.py chamada
+"A AULA INTEIRA, SE LIDA DE UMA VEZ" — teoria + questões + checklist. É o
+tempo de quem senta e lê a aula do começo ao fim.
+
+   Passou de 40 min  ->  a aula PRECISA ter também uma versão resumida.
+
+A completa NÃO ENCOLHE. Ela é o caderno: fica exatamente como está, com as
+fichas de conceito, as analogias com limite e todas as questões. A resumida
+é um SEGUNDO ARQUIVO, e é ela que vira a leitura do dia.
+
+COMO O ARQUIVO SE LIGA À AULA COMPLETA. A resumida NÃO leva 'id' — dois
+arquivos com o mesmo id quebram o índice. Ela leva 'resumo_de':
+
+    ---
+    resumo_de: R01
+    titulo: Modelo OSI: as sete camadas (versão resumida)
+    resumo: uma frase, como na completa
+    tempo: 45 min          <- a mesma fatia da completa
+    ---
+
+Nome do arquivo: o mesmo da completa, com " (resumo)" no fim.
+O indexar.py põe as duas no dados/aulas.json — a completa em "arquivos", a
+resumida em "resumos" — e a página da aula mostra o botão
+"completa | resumida" quando as duas existem.
+
+O QUE A RESUMIDA GUARDA, em ordem de prioridade:
+   1. a tabela "palavra do enunciado -> conceito" — INTEIRA, é a de maior
+      retorno por linha de toda a aula;
+   2. as tabelas comparativas e os [!decore];
+   3. o mecanismo de cada item: o problema que resolve e como funciona por
+      dentro, em duas ou três frases por item;
+   4. os [!pegadinha], que podem ser fundidos entre si;
+   5. DUAS OU TRÊS questões, as de conferência — as mesmas que a completa
+      resolveria no dia, COPIADAS LITERALMENTE dela, com o enunciado inteiro,
+      as alternativas e o gabarito comentado. Nunca reescreva um enunciado de
+      memória para encurtar;
+   6. o checklist de véspera.
+
+O QUE FICA SÓ NA COMPLETA:
+   - as analogias e o "onde a analogia quebra";
+   - os exemplos longos e as saídas de comando comentadas linha a linha;
+   - o histórico e o "por que isso existe" estendido;
+   - TODAS as outras questões.
+
+DUAS COISAS QUE A RESUMIDA TEM DE FAZER, e são obrigatórias:
+   - abrir com um [!nota] dizendo, com os números do tamanho.py, quanto pede
+     a completa e quanto pede esta, o que ficou de fora e quando usar cada
+     uma;
+   - dizer, no callout da seção de questões, quantas questões ficaram na
+     completa e de onde elas são.
+
+SE NEM A RESUMIDA COUBER em 45 min — acontece em assunto que na verdade são
+três (R04 é o caso: portas, UDP e TCP) —, não gute o conteúdo. Declare o
+número real no [!nota] do topo e diga onde parar se o dia apertar.
+
 ESTRUTURA RECOMENDADA
    - callout [!banca] — o que a banca cobra + quantas vezes caiu
    - o problema que o conceito resolve
@@ -238,7 +313,8 @@ ESTRUTURA RECOMENDADA
    - tabela "palavra do enunciado → conceito"
    - tabela comparativa dos conceitos que se confundem
    - callouts [!pegadinha] — onde a banca derruba
-   - questões de 2018/2023 + caderno CESGRANRIO + inéditas, comentadas
+   - questões de 2018/2023 + caderno CESGRANRIO, comentadas (inéditas só
+     se as duas fontes juntas derem 5 ou menos)
    - figuras pendentes, se houver
    - onde treinar no TecConcursos
    - callout [!checklist] — véspera
@@ -250,6 +326,10 @@ CHECAGEM FINAL — rode antes de dizer que a aula acabou:
    4. Toda analogia tem o limite declarado (R2)?
    5. O conceito que mais aparece como distrator é o mais explicado (R4)?
    6. A contagem de palavras da teoria bate com a fatia do calendário?
+   7. Deu mais de 5 questões reais? Então não pode haver nenhuma inédita.
+   8. A aula inteira passou de 40 min? Então a versão resumida existe, está
+      medida com o tamanho.py e aparece no indexar.py como "com versao
+      resumida".
 =====================================================================
 -->
 
@@ -266,9 +346,8 @@ Texto normal. **Negrito** para o termo que cai na prova, *destaque* para a defin
 que precisa estar decorada, `código` para comando ou sintaxe, ==marcação== para o que
 você quer reler primeiro.
 
-<!-- CUIDADO: o ==realce== NÃO atravessa quebra de linha (assets/md.js, regex
-     [^=\n]). Se o trecho realçado passar de uma linha, ele sai como "==texto=="
-     literal na tela. Mantenha cada ==...== numa linha só. -->
+<!-- O ==realce== já atravessa quebra de linha (assets/md.js). O que ele não
+     atravessa é linha em branco, porque aí são dois parágrafos. -->
 
 
 - Item de lista
@@ -335,7 +414,9 @@ REGRA DAS QUESTÕES — vale para toda aula:
       a) provas TRANSPETRO 2018 e 2023 (coluna `assunto` dos índices .csv);
       b) "Caderno CESGRANRIO 2023-2026 TI indice.csv" — mesma banca, outros
          órgãos e anos mais recentes. É a fonte mais subaproveitada do projeto;
-      c) inéditas, escritas por você, para tapar o que ficou descoberto.
+      c) inéditas, escritas por você, para tapar o que ficou descoberto —
+         MAS SÓ SE (a) + (b) derem 5 ou menos. Passando de 5 questões reais,
+         a aula não leva nenhuma inédita.
    Busque também por SINÔNIMOS e pelo vocabulário do enunciado, não só pelo
    nome do assunto: parte das questões está indexada sob outro rótulo.
 

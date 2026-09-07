@@ -14,6 +14,15 @@ calibragem do _MODELO.md:
 
 O 'tempo' do frontmatter e a fatia do calendario, nao o tempo de leitura:
 e o 'min' do dia no plano.json dividido pelo numero de topicos daquele dia.
+
+VERSAO RESUMIDA. A medida que decide e "A AULA INTEIRA, SE LIDA DE UMA VEZ"
+(teoria + questoes + checklist), que e o tempo de quem senta e le a aula do
+comeco ao fim. Passando de 40 min, a aula precisa de uma versao resumida:
+um segundo arquivo com 'resumo_de: <id>' no frontmatter, no lugar do 'id'.
+
+A resumida tem que fechar essa mesma conta em ate 45 min (ou na fatia dela,
+o que for maior). A completa fica exatamente como esta — ela e o caderno; a
+resumida e a leitura do dia.
 """
 import io, os, re, sys
 
@@ -22,6 +31,8 @@ AULAS = os.path.join(RAIZ, 'aulas')
 
 PAL_POR_MIN = 100.0     # leitura de estudo, assunto novo
 MIN_POR_QUESTAO = 4.0   # resolver + ler o comentario, primeira vez
+TETO_RESUMO = 40        # min de aula inteira acima dos quais e preciso ter versao resumida
+TETO_SESSAO = 45        # min de aula inteira que a versao resumida tem que respeitar
 
 try:
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -59,6 +70,21 @@ def frontmatter(texto):
     return meta
 
 
+def acha_resumo(ident):
+    """Devolve o caminho da versao resumida de um id, se existir."""
+    if not ident:
+        return None
+    for pasta, _, nomes in os.walk(AULAS):
+        for nome in sorted(nomes):
+            if not nome.endswith('.md') or nome.startswith('_'):
+                continue
+            alvo = os.path.join(pasta, nome)
+            m = frontmatter(io.open(alvo, encoding='utf-8').read())
+            if (m.get('resumo_de') or '').strip().lower() == ident.strip().lower():
+                return alvo
+    return None
+
+
 def analisa(caminho):
     texto = io.open(caminho, encoding='utf-8').read()
     meta = frontmatter(texto)
@@ -77,10 +103,16 @@ def analisa(caminho):
     if m:
         fatia = int(m.group(1))
 
+    ehResumo = bool((meta.get('resumo_de') or '').strip())
+
     rel = os.path.relpath(caminho, RAIZ).replace('\\', '/')
     print('')
     print('  %s' % rel)
-    print('  id %s  ·  fatia declarada: %s' % (meta.get('id', '?'), meta.get('tempo', '?')))
+    if ehResumo:
+        print('  VERSAO RESUMIDA de %s  ·  fatia declarada: %s'
+              % (meta.get('resumo_de', '?').upper(), meta.get('tempo', '?')))
+    else:
+        print('  id %s  ·  fatia declarada: %s' % (meta.get('id', '?'), meta.get('tempo', '?')))
     print('  ' + '-' * 62)
     print('  teoria ....... %5d palavras  ->  %4.0f min de leitura' % (pal, min_teoria))
     print('  questoes ..... %5d na aula   ->  %4.0f min para resolver todas' % (n_questoes, min_questoes))
@@ -88,6 +120,44 @@ def analisa(caminho):
     print('  ' + '-' * 62)
     print('  a aula inteira, se lida de uma vez  %4.0f min' % (min_teoria + min_questoes + 5))
     print('  (mas ela nao e feita de uma vez — veja a distribuicao abaixo)')
+
+    # ---- a regra das duas versoes -------------------------------------
+    # A medida e a aula inteira lida de uma vez, nao so a teoria: e o tempo
+    # de quem senta e le do comeco ao fim, que e o que o calendario compra.
+    inteira = min_teoria + min_questoes + 5
+    if ehResumo:
+        teto = max(TETO_SESSAO, fatia)
+        print('')
+        # compara pelo numero arredondado, o mesmo que aparece impresso acima:
+        # senao o script reprova um "45 min contra 45" por causa de decimal
+        if round(inteira) > teto:
+            sobra = int(round((inteira - teto) * PAL_POR_MIN))
+            print('  ATENCAO: a resumida ainda nao cabe na sessao: %.0f min contra %d.'
+                  % (inteira, teto))
+            print('  Corte ~%d palavras de teoria, ou uma questao (vale %d min cada).'
+                  % (sobra, int(MIN_POR_QUESTAO)))
+            print('  O que sair daqui continua guardado na versao completa.')
+        else:
+            print('  Resumida cabe na sessao: %.0f min de aula inteira (teto: %d min).'
+                  % (inteira, teto))
+            print('  %d palavras de teoria, %d questao(oes) de conferencia.'
+                  % (pal, n_questoes))
+    elif inteira > TETO_RESUMO:
+        resumo = acha_resumo(meta.get('id'))
+        print('')
+        if resumo:
+            r = os.path.relpath(resumo, RAIZ).replace(chr(92), '/')
+            print('  Aula inteira de %.0f min: passa de %d, e a versao resumida existe.'
+                  % (inteira, TETO_RESUMO))
+            print('  -> %s' % r)
+        else:
+            print('  FALTA A VERSAO RESUMIDA. Lida de uma vez esta aula pede %.0f min,'
+                  % inteira)
+            print('  acima do teto de %d. Escreva um segundo arquivo com "resumo_de: %s"'
+                  % (TETO_RESUMO, (meta.get('id') or 'ID').upper()))
+            print('  no frontmatter, fechando %d min com teoria + 2 ou 3 questoes de'
+                  % max(TETO_SESSAO, fatia))
+            print('  conferencia + checklist. A completa fica exatamente como esta.')
 
     if not fatia:
         print('  (sem campo "tempo" no frontmatter — nao da para comparar)')

@@ -63,6 +63,30 @@ tempo: 90 min
 arquivo são livres — organize como quiser. A aula aparece na próxima vez que
 você rodar o `iniciar.bat`.
 
+### A versão resumida
+
+Meça a aula pronta com `python ferramentas/tamanho.py "<caminho>"` e olhe a
+linha **"a aula inteira, se lida de uma vez"**. Passando de **40 min**, escreva
+também uma versão resumida, num segundo arquivo:
+
+```yaml
+---
+resumo_de: R05
+titulo: Topologias e meios físicos (versão resumida)
+resumo: A mesma aula dentro da fatia.
+tempo: 90 min
+---
+```
+
+Repare no `resumo_de` **no lugar do `id`** — id repetido quebra o índice. O nome
+do arquivo é o da completa com `" (resumo)"` no fim. O `indexar.py` põe as duas
+no `dados/aulas.json` e a página da aula mostra o botão **completa | resumida**.
+
+A completa **não encolhe**: ela é o caderno. A resumida guarda as tabelas
+inteiras, o mecanismo de cada item, as pegadinhas e 2 ou 3 questões de
+conferência copiadas literalmente. O bloco "AS DUAS VERSÕES" do `_MODELO.md` tem
+a lista completa do que fica em cada uma.
+
 ### Regra das questões
 
 Toda questão diz de onde veio, no próprio título:
@@ -174,10 +198,12 @@ estudos-transpetro/
 │  ├─ plano.json         as 12 semanas — o que estudar e quando
 │  ├─ progresso.json     o que você já fez — versionado no git
 │  └─ aulas.json         gerado: id do tópico -> caminho do arquivo
+│                        (e id -> caminho da versão resumida)
 ├─ aulas/
 │  ├─ _MODELO.md         copie este
 │  ├─ redes/ seguranca/ banco-de-dados/ ...
-│  └─ redes/Modelo OSI - as sete camadas.md
+│  ├─ redes/Modelo OSI - as sete camadas.md
+│  └─ redes/Modelo OSI - as sete camadas (resumo).md
 ├─ info/                 banca.md · transpetro.md · ajuda.md
 ├─ ferramentas/
 │  ├─ servidor.py        serve os arquivos e grava o progresso

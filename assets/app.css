@@ -228,6 +228,9 @@ body.readonly .open{opacity:.92}
 .markdown a{color:var(--jade);text-decoration:underline;text-underline-offset:3px}
 .markdown ul,.markdown ol{margin:11px 0;padding-left:20px}
 .markdown li{margin:6px 0}
+.markdown li>p{margin:0 0 6px}
+.markdown li>p:last-child{margin-bottom:0}
+.markdown li>ul,.markdown li>ol{margin:5px 0 0}
 .markdown li::marker{color:var(--jade)}
 .markdown code{padding:2px 6px;border-radius:6px;background:rgba(127,240,184,.09);
   color:var(--jade);font:.88em "Cascadia Code",monospace}

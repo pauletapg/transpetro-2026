@@ -1,15 +1,27 @@
 {
-  "v": 1788756103,
+  "v": 1788819293,
   "aulas": [
     "r01",
-    "r02"
+    "r02",
+    "r03",
+    "r04"
   ],
   "arquivos": {
     "r02": "aulas/redes/Encapsulamento - PDU, cabecalho e payload.md",
-    "r01": "aulas/redes/Modelo OSI - as sete camadas.md"
+    "r01": "aulas/redes/Modelo OSI - as sete camadas.md",
+    "r03": "aulas/redes/Pilha TCP-IP e o mapeamento com o OSI.md",
+    "r04": "aulas/redes/TCP e UDP - handshake, confiabilidade e portas conhecidas.md"
   },
   "titulos": {
     "r02": "Encapsulamento: PDU, cabeçalho e payload",
-    "r01": "Modelo OSI: as sete camadas e o que cada uma resolve"
+    "r01": "Modelo OSI: as sete camadas e o que cada uma resolve",
+    "r03": "Pilha TCP/IP e o mapeamento com o OSI",
+    "r04": "TCP × UDP — handshake, confiabilidade e portas conhecidas"
+  },
+  "resumos": {
+    "r02": "aulas/redes/Encapsulamento - PDU, cabecalho e payload (resumo).md",
+    "r01": "aulas/redes/Modelo OSI - as sete camadas (resumo).md",
+    "r03": "aulas/redes/Pilha TCP-IP e o mapeamento com o OSI (resumo).md",
+    "r04": "aulas/redes/TCP e UDP - handshake, confiabilidade e portas conhecidas (resumo).md"
   }
 }

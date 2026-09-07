@@ -17,8 +17,9 @@ tempo: 45 min
 >
 > Além dessas quatro, esta aula traz **mais 6 questões CESGRANRIO** do seu caderno, entre
 > elas **duas da própria TRANSPETRO em 2023** (cargo Informática, mesma prova, mesmo dia)
-> e uma do BNDES 2024 e uma do BANESE 2025. **São 10 questões reais de banca**, mais 2
-> inéditas para tapar o que nenhuma delas cobriu.
+> e uma do BNDES 2024 e uma do BANESE 2025. **São 10 questões reais de banca, e nenhuma
+> inédita** — com dez de prova no assunto, questão escrita por mim só tiraria espaço do
+> molde verdadeiro da CESGRANRIO.
 >
 > **O molde:** enunciado longo e definicional, alternativa de duas ou três palavras — o
 > formato que responde por 56% das questões de TI da ênfase 4. Os distratores são quase
@@ -46,7 +47,7 @@ tempo: 45 min
 > Na segunda, leia dela só o vocabulário (PDU, SDU, PCI) — a seção 4 desta aula aqui já
 > adiantou o resto.
 >
-> **Q03 a Q12 não são para hoje.** Q03 e Q04 abrem a sessão de terça-feira, de cabeça, antes
+> **Q03 a Q10 não são para hoje.** Q03 e Q04 abrem a sessão de terça-feira, de cabeça, antes
 > de qualquer leitura nova; as outras são material do bloco de sábado. Responder sobre um
 > texto que você acabou de ler mede memória de trabalho, não aprendizado — é o intervalo de
 > um dia que fixa.
@@ -269,8 +270,8 @@ duplica e entrega fora de ordem, e não avisa ninguém.
 
 **Como funciona.**
 
-- **Porta** — um número de **16 bits** (0 a 65.535) que identifica o processo. Endereço IP
-  + porta é o que se chama *socket*. Portas conhecidas: 80 HTTP, 443 HTTPS, 22 SSH, 25
+- **Porta** — um número de **16 bits** (0 a 65.535) que identifica o processo.
+  Endereço IP + porta é o que se chama *socket*. Portas conhecidas: 80 HTTP, 443 HTTPS, 22 SSH, 25
   SMTP, 53 DNS.
 - **Segmentação** — a camada 4 pega o fluxo vindo de cima e o corta em pedaços do tamanho
   que a rede aguenta, numerando-os.
@@ -906,71 +907,6 @@ A quais camadas do modelo OSI correspondem os protocolos TCP e IP, respectivamen
 >
 > Tipo de distrator: **T4 (inversão/deslocamento de ordem)**. Repare que a banca respeita a
 > ordem "respectivamente" — ela nunca precisa mentir, basta deslocar.
-
-### Q11 · Inédita
-
-> [!fonte] Fonte: questão inédita, não caiu em prova
-> Escrita no molde T3 do BANESE (Q07): enunciado definicional, alternativa curta. Cobre a
-> **camada 6**, que aparece como distrator em quatro das dez questões acima e nunca foi
-> cobrada diretamente pela TRANSPETRO. É o buraco mais provável do assunto.
-
-Um sistema legado executado em mainframe representa caracteres em EBCDIC e números inteiros
-em ordem *big-endian*; a aplicação cliente, em um servidor Linux, usa ASCII e ordem
-*little-endian*. Para que as duas trocem registros sem que cada aplicação precise conhecer
-a arquitetura da outra, o modelo OSI atribui a conversão entre a representação local e uma
-sintaxe de transferência comum à camada de
-
-- [ ] sessão
-- [ ] aplicação
-- [x] apresentação
-- [ ] transporte
-- [ ] enlace de dados
-
-> [!gabarito]-
-> **Gabarito: C.** Converter entre a representação local de cada máquina e uma **sintaxe de
-> transferência** comum é a definição da **camada 6, Apresentação** (seção 3 desta aula). É
-> o mesmo mecanismo do ASN.1/BER.
->
-> **A, sessão** é o distrator por vizinhança na pilha — sessão cuida do *diálogo*, não do
-> *formato*. **B, aplicação** pega quem raciocina pela prática, onde a conversão costuma
-> ser feita por biblioteca dentro do programa; no modelo OSI o lugar formal é a 6.
-> **D** e **E** oferecem camadas que transportam bytes sem interpretá-los.
->
-> Tipo de distrator: **T2 (irmão taxonômico)**. Guarde a associação inteira da camada 6:
-> **formato + codificação de caractere + compressão + criptografia**.
-
-### Q12 · Inédita
-
-> [!fonte] Fonte: questão inédita, não caiu em prova
-> Escrita no molde da Q41 de 2018 (lista + "nessa ordem"), mas cobrando **encapsulamento**
-> em vez de equipamento — a única parte da teoria desta aula que nenhuma das dez questões
-> reais cobrou, e que é conteúdo explícito do item 1.1e do edital.
-
-Um quadro Ethernet capturado na rede local de uma empresa contém, do lado de fora para o
-lado de dentro, os seguintes elementos: (i) o endereço MAC de destino; (ii) o endereço IP
-de destino; (iii) a porta TCP de destino; (iv) a linha `GET /index.html HTTP/1.1`.
-
-No modelo de referência OSI, os elementos (i) a (iv) foram inseridos, nessa ordem, pelas
-camadas de números
-
-- [ ] 1, 2, 3 e 4
-- [ ] 2, 3, 4 e 6
-- [x] 2, 3, 4 e 7
-- [ ] 3, 2, 4 e 7
-- [ ] 2, 3, 5 e 7
-
-> [!gabarito]-
-> **Gabarito: C.** MAC = **2**, IP = **3**, porta = **4**, comando HTTP = **7**. É a ordem
-> do encapsulamento lida de fora para dentro (seção 4 desta aula): o último cabeçalho a ser
-> acrescentado é o primeiro a aparecer no fio.
->
-> **A** desloca tudo um nível para baixo e põe MAC na física. **B** repete a armadilha da
-> Q41 de 2018, oferecendo **6** para algo que é aplicação. **D** inverte MAC e IP — quem
-> leu "de dentro para fora" sem prestar atenção marca aqui. **E** troca transporte por
-> sessão, aproveitando que a 5 não tem PDU própria.
->
-> Tipo de distrator: **T4 (inversão de ordem)** em D, **T2** nas demais. Se você acertou
-> esta e a Q01, o assunto está resolvido.
 
 ## Figuras pendentes
 

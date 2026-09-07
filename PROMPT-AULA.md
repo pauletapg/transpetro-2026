@@ -22,10 +22,6 @@ Crie/refaça a aula do tópico <ID> do meu calendário de estudos da TRANSPETRO 
 CONTEXTO — leia antes de escrever:
 - estudos-transpetro/aulas/_MODELO.md — formato e regras. Siga à risca, em
   especial o bloco "PROFUNDIDADE EXIGIDA" e a tabela de TAMANHO E TEMPO.
-- estudos-transpetro/aulas/redes/Modelo OSI - as sete camadas.md — a aula de
-  referência, no padrão novo. Use como calibre de profundidade, de tom e de
-  formato de comentário de questão. É a régua: se a sua aula estiver visivelmente
-  mais rasa que ela, falta seção.
 - perfil-da-banca-TRANSPETRO.md (leia inteiro, é curto)
 - perfil-da-banca-CESGRANRIO-TI.md — §3 tem a taxonomia de distratores T1 a T8
 - prioridades.md — peso do bloco
@@ -77,6 +73,25 @@ PROFUNDIDADE — é caderno de estudo, parto do zero. Regras:
    calendário. Se a teoria passar da fatia, NÃO encolha: avise no topo da aula,
    num callout [!nota], como distribuir o excedente no dia.
 
+9. AS DUAS VERSÕES. Depois de escrever a aula completa, olhe a linha
+   "a aula inteira, se lida de uma vez" do tamanho.py. Passando de 40 min,
+   escreva TAMBÉM uma versão resumida, num segundo arquivo, seguindo o bloco
+   "AS DUAS VERSÕES" do _MODELO.md:
+     - mesmo nome de arquivo com " (resumo)" no fim;
+     - frontmatter com "resumo_de: <ID>" NO LUGAR do "id" (id repetido quebra
+       o índice), mais titulo, resumo e o mesmo "tempo" da completa;
+     - guarda as tabelas inteiras, os [!decore], o mecanismo de cada item e as
+       pegadinhas; deixa na completa as analogias, os exemplos longos e o
+       histórico;
+     - traz DUAS OU TRÊS questões, as de conferência, COPIADAS LITERALMENTE da
+       completa — enunciado inteiro, alternativas e gabarito comentado. Nunca
+       reescreva um enunciado de memória;
+     - abre com um [!nota] que diz, com os números do tamanho.py, quanto pede
+       cada versão, o que ficou de fora e quando usar cada uma.
+   A COMPLETA NÃO MUDA. Ela continua sendo o caderno; a resumida é a leitura
+   do dia. Meça a resumida com o tamanho.py também: ele compara a aula inteira
+   com os 45 min da sessão e diz quanto ainda falta cortar.
+
 QUESTÕES — obrigatório. São TRÊS fontes, nesta ordem:
 
   a) PROVAS TRANSPETRO 2018 e 2023. Localize no índice de 2018 (coluna `assunto`
@@ -88,8 +103,11 @@ QUESTÕES — obrigatório. São TRÊS fontes, nesta ordem:
      aparecer questões da própria TRANSPETRO de outros cargos, além de BNDES,
      BANESE, CEF e BASA dos últimos dois anos. Traga TODAS as do assunto.
 
-  c) INÉDITAS, escritas por você, só para cobrir o que (a) e (b) deixaram de
-     fora — normalmente o conceito que só aparece como distrator.
+  c) INÉDITAS, escritas por você — MAS SÓ SE (a) + (b) DEREM 5 OU MENOS.
+     Passando de 5 questões reais no assunto, NÃO escreva nenhuma inédita:
+     com seis ou mais de prova na mesa, cada inédita dilui o molde verdadeiro
+     da banca e treina o olho no molde errado. Com 5 ou menos, escreva até
+     chegar a 8 e diga na aula quantas são reais e quantas não são.
 
   A ORDEM DAS QUESTÕES IMPORTA, pela regra das 24 horas do _MODELO.md: no dia
   em que a aula é lida eu resolvo só DUAS OU TRÊS, como conferência de leitura.
@@ -120,9 +138,6 @@ PDF e em que página aproximada, o caminho de destino `../img/AAAA-qNN.png`
 gabarito, com o comentário do que dá para comentar sem ver a figura. Liste todas
 as figuras pendentes juntas no fim da aula. Se não houver nenhuma, diga isso.
 
-CUIDADO COM O RENDERIZADOR: o realce ==assim== não atravessa quebra de linha.
-Mantenha cada ==...== numa linha só, ou ele sai como "==" literal na tela.
-
 ANTES DE DIZER QUE ACABOU, rode esta checagem e me relate o resultado:
  (a) A teoria resolve todas as questões sozinha? Se alguma exige algo não
      explicado, falta seção — acrescente antes de terminar.
@@ -134,6 +149,9 @@ ANTES DE DIZER QUE ACABOU, rode esta checagem e me relate o resultado:
  (f) Quanto deu o tamanho.py, e a aula avisa no topo se passou da fatia?
  (g) Todos os ids de questão que você citou existem mesmo nos índices? Confira
      um a um, não confie na memória.
+ (h) Deu mais de 5 questões reais? Então a aula não pode ter nenhuma inédita.
+ (i) A aula inteira passou de 40 min no tamanho.py? Então a versão resumida
+     existe, foi medida, e o indexar.py imprimiu "N com versao resumida".
 
 ONDE SALVAR:
 - estudos-transpetro/aulas/<disciplina>/<Título legível>.md
@@ -143,8 +161,11 @@ ONDE SALVAR:
   cópia de backup: esta pasta é um repositório git e a versão anterior fica
   recuperável com `git show HEAD:"<caminho>"`. Dois arquivos com o mesmo id
   fazem o indexar.py descartar um deles em silêncio.
+- a versão resumida vai na mesma pasta, com " (resumo)" no nome, e leva
+  "resumo_de: <ID>" no lugar do "id".
 - ao terminar: python estudos-transpetro/ferramentas/indexar.py
-  e confira na saída que não apareceu "AVISO: id ... repetido".
+  e confira na saída que não apareceu "AVISO: id ... repetido" e que apareceu
+  a linha "N com versao resumida".
 - abra no navegador (python estudos-transpetro/ferramentas/servidor.py →
   http://127.0.0.1:8765) e confirme que renderizou antes de dizer que acabou:
   callouts, tabelas, alternativas e gabaritos colapsáveis.
@@ -259,6 +280,20 @@ tópico no `plano.json`.
 **Substituir o arquivo em vez de arquivar com `_`.** A pasta é um repositório
 git: a versão anterior está sempre a um `git show HEAD:"<caminho>"` de
 distância. Cópias `_antiga.md` só acumulam lixo, uma por revisão.
+
+**Nada de inédita quando já há mais de 5 reais.** A inédita existe para tapar
+buraco, não para engordar a seção. Questão escrita por mim não tem o vício de
+redação da banca — a extensão do enunciado, a ordem dos distratores, o jeito
+de esconder o discriminante numa palavra —, e com seis ou mais questões reais
+na mesa cada inédita acrescentada treina o olho no molde errado. Nas quatro
+aulas de redes, essa regra tirou 13 questões e não perdeu nenhuma real.
+
+**As duas versões.** As quatro primeiras aulas ficaram entre 105 e 185 minutos
+lidas de uma vez, contra fatias de 45. A saída não é encolher o caderno — é
+ter dois arquivos: a completa, que é onde o conceito gruda na primeira
+leitura, e a resumida, que é o que cabe no dia, no aquecimento e na véspera.
+A régua é a linha "a aula inteira, se lida de uma vez" do tamanho.py, e o
+gatilho são 40 minutos.
 
 **A checagem final.** É a única parte que força a revisão. Sem ela a aula fica
 com teoria bonita e questões que ela não resolve.

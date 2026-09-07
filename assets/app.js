@@ -24,6 +24,7 @@ const CAN_WRITE = () => MODO_ESCRITA !== null;
 
 let plano = null;
 let aulasEscritas = [];
+let aulasResumidas = [];   // ids que tem tambem versao resumida
 let state = { atualizadoEm: '1970-01-01T00:00:00.000Z', sessoes: {} };
 let baseline = '';          // atualizadoEm do arquivo lido no carregamento
 let week = 0;
@@ -76,8 +77,10 @@ async function boot() {
     return fatal();
   }
   try {
-    aulasEscritas = (await (await fetch('dados/aulas.json', { cache: 'no-store' })).json()).aulas || [];
-  } catch (e) { aulasEscritas = []; }
+    const ix = await (await fetch('dados/aulas.json', { cache: 'no-store' })).json();
+    aulasEscritas = ix.aulas || [];
+    aulasResumidas = Object.keys(ix.resumos || {});
+  } catch (e) { aulasEscritas = []; aulasResumidas = []; }
 
   let doArquivo = { atualizadoEm: '1970-01-01T00:00:00.000Z', sessoes: {} };
   try { doArquivo = await (await fetch('dados/progresso.json', { cache: 'no-store' })).json(); } catch (e) { /* ainda não existe */ }
@@ -335,10 +338,14 @@ function openDay(di, trigger) {
 
   $('#nodeList').innerHTML = dia.topicos.map(t => {
     const escrita = aulasEscritas.includes(t.id.toLowerCase());
+    const temResumo = aulasResumidas.includes(t.id.toLowerCase());
     const destino = t.aula || `aula.html?t=${encodeURIComponent(t.id.toLowerCase())}`;
+    const legenda = escrita
+      ? (temResumo ? 'abrir a aula · tem versão resumida' : 'abrir a aula')
+      : 'aula ainda não escrita';
     return `<a class="node${escrita ? '' : ' no-aula'}" href="${esc(destino)}">
       <span class="node-id">${esc(t.id)}</span>
-      <span><b>${esc(t.t)}</b><small>${escrita ? 'abrir a aula' : 'aula ainda não escrita'}</small></span>
+      <span><b>${esc(t.t)}</b><small>${legenda}</small></span>
       <span class="node-go">↗</span></a>`;
   }).join('');
 

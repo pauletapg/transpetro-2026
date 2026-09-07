@@ -43,6 +43,30 @@ fixa, não a repetição.
 > assuntos de peso — esse mesmo callout traz o plano de como espalhá-la pela
 > semana.
 
+## Duas versões da mesma aula
+
+Assunto de peso não cabe em 45 minutos. Em vez de encolher o caderno, as aulas
+grandes têm **duas versões**, e o botão **completa | resumida**, no topo da
+página da aula, troca entre elas.
+
+| | **Completa** | **Resumida** |
+|---|---|---|
+| O que é | o caderno: ficha de conceito por item, analogias com limite, exemplos longos, todas as questões | o que decide gabarito: mecanismo, tabelas, pegadinhas e as 2 ou 3 questões de conferência |
+| Quanto pede | 105 a 185 min, lida de uma vez | ~45 min, a fatia do dia |
+| Quando usar | **na primeira vez que estudar o assunto** — é ela que faz o conceito grudar | no aquecimento, nas revisões e na véspera |
+
+A regra que cria a segunda versão: passando de **40 min** lida de uma vez, a
+aula ganha uma resumida. A completa não muda — ela continua sendo onde o
+assunto está inteiro.
+
+A escolha fica guardada: clicando em *resumida*, o **próxima →** continua
+abrindo as resumidas até você trocar de volta. No calendário, o tópico que tem
+as duas versões diz *"tem versão resumida"* embaixo do nome.
+
+**Se o dia estiver curto, leia a resumida inteira em vez de meia completa.** A
+resumida foi cortada para continuar fechando as questões sozinha; uma completa
+lida pela metade não fecha.
+
 ## Sábado: os últimos 20 minutos sem filtro
 
 As baterias de sábado são por assunto: Redes, Segurança, SQL. Isso treina
@@ -167,6 +191,17 @@ Toda questão diz de onde veio: **prova e ano**, ou **"Inédita"** quando foi
 escrita com base no perfil da banca. As aulas trazem, sempre que existirem, as
 questões de **2018 e 2023** relacionadas ao assunto, com o enunciado inteiro — e
 a teoria da aula é suficiente para resolvê-las.
+
+**Quando o assunto já tem mais de 5 questões reais, a aula não traz nenhuma
+inédita.** O motivo é de treino: questão escrita por IA não tem o vício de
+redação da banca — a extensão do enunciado, a ordem dos distratores, o jeito de
+esconder o discriminante numa palavra. Com seis ou mais de prova na mesa, cada
+inédita acrescentada dilui o molde verdadeiro. As inéditas continuam existindo
+nos assuntos magros, para tapar o conceito que só aparece como distrator.
+
+A **versão resumida** de uma aula traz só as **2 ou 3 questões de conferência**,
+copiadas literalmente da completa. As demais ficam na completa, e o callout da
+seção diz quantas são e de onde vieram.
 
 O gabarito **não fica à vista**: responda primeiro, clique em *Comentário*
 depois. No PDF, os comentários saem de perto das questões e viram um **caderno
