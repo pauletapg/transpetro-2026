@@ -39,9 +39,12 @@ class Handler(SimpleHTTPRequestHandler):
         self.wfile.write(dados)
 
     def end_headers(self):
-        # o service worker precisa de no-cache no proprio sw.js
-        if (self.path or '').endswith('sw.js'):
-            self.send_header('Cache-Control', 'no-cache')
+        # No-cache em tudo, nao so no sw.js. Sem isto o SimpleHTTPRequestHandler
+        # nao manda Cache-Control nenhum, e o navegador aplica cache por palpite:
+        # voce edita o app.js ou a aula.css, recarrega a pagina e continua vendo
+        # a versao anterior, sem nenhum aviso. No-cache nao proibe guardar copia,
+        # so obriga a perguntar ao servidor antes de usar — de graca em localhost.
+        self.send_header('Cache-Control', 'no-cache')
         super().end_headers()
 
     def do_GET(self):

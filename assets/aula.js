@@ -43,14 +43,13 @@ async function abrir() {
   // só respeita o pedido de resumo se ele existir de fato
   const emResumo = versaoPedida === 'resumo' && !!resumida;
   const caminho = emResumo ? resumida : completa;
-  // no-store como nos dois JSON acima: a aula e reescrita por cima, com o
-  // mesmo nome de arquivo, e sem isto o cache do navegador serve a versao
-  // anterior. O sw.js ja guarda a copia para ler offline.
-  const texto = caminho
-    ? await fetch(caminho.split('/').map(encodeURIComponent).join('/'), { cache: 'no-store' })
-        .then(r => r.ok ? r.text() : null).catch(() => null)
-    : null;
 
+  /* A BARRA DE CIMA VAI ANTES DO TEXTO DA AULA. Tudo que ela precisa ja
+     chegou no aulas.json; o .md nao muda nada nela. Quando o alternador
+     ficava depois do await, ele so aparecia com a aula inteira baixada —
+     e a completa passa de 90 KB contra 22 KB da resumida, entao no celular
+     voce ia da resumida para a completa e o botao "resumida" demorava
+     segundos para voltar a existir, como se tivesse sumido. */
   alternador(!!completa, !!resumida, emResumo);
 
   const { achado, todos } = plano ? localizar(plano) : { achado: null, todos: [] };
@@ -58,6 +57,14 @@ async function abrir() {
   if (cor) document.documentElement.style.setProperty('--accent', cor);
 
   vizinhos(todos, indice);
+
+  // no-store como nos dois JSON acima: a aula e reescrita por cima, com o
+  // mesmo nome de arquivo, e sem isto o cache do navegador serve a versao
+  // anterior. O sw.js ja guarda a copia para ler offline.
+  const texto = caminho
+    ? await fetch(caminho.split('/').map(encodeURIComponent).join('/'), { cache: 'no-store' })
+        .then(r => r.ok ? r.text() : null).catch(() => null)
+    : null;
 
   if (texto === null) {
     return vazio(

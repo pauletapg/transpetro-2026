@@ -340,13 +340,22 @@ function openDay(di, trigger) {
     const escrita = aulasEscritas.includes(t.id.toLowerCase());
     const temResumo = aulasResumidas.includes(t.id.toLowerCase());
     const destino = t.aula || `aula.html?t=${encodeURIComponent(t.id.toLowerCase())}`;
+    /* Com as duas versões à vista, cada link diz qual abre: sem o &v= a aula.html
+       cairia na última versão escolhida e o link "completa" poderia abrir o resumo. */
+    const ver = v => destino + (destino.includes('?') ? '&' : '?') + 'v=' + v;
     const legenda = escrita
-      ? (temResumo ? 'abrir a aula · tem versão resumida' : 'abrir a aula')
+      ? (temResumo ? 'abrir a aula completa' : 'abrir a aula')
       : 'aula ainda não escrita';
-    return `<a class="node${escrita ? '' : ' no-aula'}" href="${esc(destino)}">
-      <span class="node-id">${esc(t.id)}</span>
-      <span><b>${esc(t.t)}</b><small>${legenda}</small></span>
-      <span class="node-go">↗</span></a>`;
+    const atalho = temResumo
+      ? `<a class="node-resumo" href="${esc(ver('resumo'))}"
+            title="Abrir a versão resumida desta aula">resumida</a>`
+      : '';
+    return `<div class="node-row">
+      <a class="node${escrita ? '' : ' no-aula'}" href="${esc(temResumo ? ver('completa') : destino)}">
+        <span class="node-id">${esc(t.id)}</span>
+        <span><b>${esc(t.t)}</b><small>${legenda}</small></span>
+        <span class="node-go">↗</span></a>${atalho}
+    </div>`;
   }).join('');
 
   $('#qHits').value = st.qHits || '';
@@ -358,7 +367,7 @@ function openDay(di, trigger) {
     .forEach(el => { if (!el.readOnly) el.disabled = !CAN_WRITE(); });
 
   // grava o que estiver pendente ANTES de sair para a aula
-  document.querySelectorAll('#nodeList .node').forEach(a => a.addEventListener('click', async e => {
+  document.querySelectorAll('#nodeList a').forEach(a => a.addEventListener('click', async e => {
     if (MODO_ESCRITA !== 'api' || state.atualizadoEm <= baseline) return;
     e.preventDefault();
     saveFields();

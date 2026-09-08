@@ -82,6 +82,11 @@ Repare no `resumo_de` **no lugar do `id`** — id repetido quebra o índice. O n
 do arquivo é o da completa com `" (resumo)"` no fim. O `indexar.py` põe as duas
 no `dados/aulas.json` e a página da aula mostra o botão **completa | resumida**.
 
+A partir daí a sessão do dia, no calendário, também ganha os dois caminhos: ao
+lado do tópico aparece o atalho **RESUMIDA**, e o tópico em si abre a completa.
+Não há nada a configurar — o atalho aparece sozinho em toda aula que tiver
+resumo no `aulas.json`.
+
 A completa **não encolhe**: ela é o caderno. A resumida guarda as tabelas
 inteiras, o mecanismo de cada item, as pegadinhas e 2 ou 3 questões de
 conferência copiadas literalmente. O bloco "AS DUAS VERSÕES" do `_MODELO.md` tem

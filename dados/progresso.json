@@ -1,5 +1,5 @@
 {
-  "atualizadoEm": "2026-09-07T03:58:18.460Z",
+  "atualizadoEm": "2026-09-07T23:21:12.879Z",
   "sessoes": {
     "0:0": {
       "feito": false,
@@ -8,6 +8,24 @@
       "erros": []
     },
     "0:1": {
+      "feito": false,
+      "qHits": 0,
+      "notas": "",
+      "erros": []
+    },
+    "0:2": {
+      "feito": false,
+      "qHits": 0,
+      "notas": "",
+      "erros": []
+    },
+    "0:3": {
+      "feito": false,
+      "qHits": 0,
+      "notas": "",
+      "erros": []
+    },
+    "0:6": {
       "feito": false,
       "qHits": 0,
       "notas": "",
